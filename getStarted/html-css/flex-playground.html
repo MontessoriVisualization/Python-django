@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!-- Flexbox interactive playground for students -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Playground</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(160deg, #f0f6ff, #f8fcf5);
+      color: #111827;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: min(1100px, 94%);
+      margin: 20px auto 40px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .intro {
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel,
+    .stage {
+      background: #fff;
+      border: 1px solid #dbeafe;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.08);
+    }
+
+    .panel {
+      padding: 14px;
+      position: sticky;
+      top: 10px;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #475569;
+      margin: 12px 0 8px;
+      font-weight: 700;
+    }
+
+    .control {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    select,
+    input[type="range"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 0.95rem;
+    }
+
+    .range-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .range-value {
+      min-width: 52px;
+      text-align: right;
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    .stage {
+      padding: 14px;
+    }
+
+    .hint {
+      color: #4b5563;
+      margin-bottom: 10px;
+    }
+
+    .playground {
+      display: flex;
+      min-height: 280px;
+      height: 320px;
+      border: 2px dashed #93c5fd;
+      background: #eff6ff;
+      padding: 10px;
+      overflow: auto;
+      transition: all 0.2s ease;
+    }
+
+    .item {
+      color: #fff;
+      border-radius: 8px;
+      min-width: 78px;
+      min-height: 54px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .item1 { background: #2563eb; }
+    .item2 { background: #0ea5e9; }
+    .item3 { background: #f59e0b; }
+    .item4 { background: #ef4444; }
+
+    .code {
+      margin-top: 12px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 10px;
+      padding: 12px;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+
+    .mini-notes {
+      margin-top: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .mini-notes p {
+      margin: 6px 0;
+    }
+
+    @media (max-width: 930px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Flexbox Playground</h1>
+    <p class="intro">Change each most-used option and see the effect instantly.</p>
+
+    <div class="layout">
+      <aside class="panel">
+        <div class="section-title">Container Options</div>
+
+        <div class="control">
+          <label for="direction">flex-direction</label>
+          <select id="direction">
+            <option value="row">row</option>
+            <option value="row-reverse">row-reverse</option>
+            <option value="column">column</option>
+            <option value="column-reverse">column-reverse</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="justify">justify-content</label>
+          <select id="justify">
+            <option value="flex-start">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="space-between" selected>space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="align">align-items</label>
+          <select id="align">
+            <option value="stretch">stretch</option>
+            <option value="flex-start">flex-start</option>
+            <option value="center" selected>center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="baseline">baseline</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="wrap">flex-wrap</label>
+          <select id="wrap">
+            <option value="nowrap" selected>nowrap</option>
+            <option value="wrap">wrap</option>
+            <option value="wrap-reverse">wrap-reverse</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="gap">gap</label>
+          <div class="range-row">
+            <input id="gap" type="range" min="0" max="40" step="2" value="10">
+            <span id="gapValue" class="range-value">10px</span>
+          </div>
+        </div>
+
+        <div class="section-title">Item Options (Item 3)</div>
+
+        <div class="control">
+          <label for="grow">flex-grow</label>
+          <div class="range-row">
+            <input id="grow" type="range" min="0" max="5" step="1" value="0">
+            <span id="growValue" class="range-value">0</span>
+          </div>
+        </div>
+
+        <div class="control">
+          <label for="order">order</label>
+          <select id="order">
+            <option value="0" selected>0 (default)</option>
+            <option value="-1">-1</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </aside>
+
+      <section class="stage">
+        <p class="hint">Blue dashed box is the <strong>flex container</strong>. Colored blocks are <strong>flex items</strong>.</p>
+
+        <div id="playground" class="playground">
+          <div class="item item1">Item 1</div>
+          <div class="item item2">Item 2</div>
+          <div id="item3" class="item item3">Item 3</div>
+          <div class="item item4">Item 4</div>
+        </div>
+
+        <pre id="cssCode" class="code"></pre>
+
+        <div class="mini-notes">
+          <p><strong>Main axis:</strong> controlled by <code>flex-direction</code>.</p>
+          <p><strong>justify-content:</strong> alignment on main axis.</p>
+          <p><strong>align-items:</strong> alignment on cross axis.</p>
+          <p><strong>flex-grow:</strong> how much free space an item takes.</p>
+          <p><strong>order:</strong> visual order only, HTML order stays same.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const playground = document.getElementById("playground");
+    const item3 = document.getElementById("item3");
+
+    const direction = document.getElementById("direction");
+    const justify = document.getElementById("justify");
+    const align = document.getElementById("align");
+    const wrap = document.getElementById("wrap");
+    const gap = document.getElementById("gap");
+    const grow = document.getElementById("grow");
+    const order = document.getElementById("order");
+
+    const gapValue = document.getElementById("gapValue");
+    const growValue = document.getElementById("growValue");
+    const cssCode = document.getElementById("cssCode");
+
+    function render() {
+      playground.style.flexDirection = direction.value;
+      playground.style.justifyContent = justify.value;
+      playground.style.alignItems = align.value;
+      playground.style.flexWrap = wrap.value;
+      playground.style.gap = gap.value + "px";
+
+      item3.style.flexGrow = grow.value;
+      item3.style.order = order.value;
+
+      gapValue.textContent = gap.value + "px";
+      growValue.textContent = grow.value;
+
+      cssCode.textContent =
+`.playground {
+  display: flex;
+  flex-direction: ${direction.value};
+  justify-content: ${justify.value};
+  align-items: ${align.value};
+  flex-wrap: ${wrap.value};
+  gap: ${gap.value}px;
+}
+
+.item3 {
+  flex-grow: ${grow.value};
+  order: ${order.value};
+}`;
+    }
+
+    [direction, justify, align, wrap, gap, grow, order].forEach(function (el) {
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+
+    render();
+  </script>
+</body>
+</html>

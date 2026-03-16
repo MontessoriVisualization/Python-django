@@ -1,0 +1,223 @@
+﻿/* ============================================================
+   EXTERNAL CSS FILE
+   Linked in HTML via: <link rel="stylesheet" href="postion.css">
+   Keeping CSS separate from HTML is best practice.
+============================================================ */
+
+/* ============================================================
+   0. GOOGLE FONT IMPORT  (CSS way - add at the very top)
+   Alternative: use <link> tags in HTML <head> instead.
+   Then use the font name in font-family below.
+============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+/* ============================================================
+   1. CSS RESET
+   Browsers add default margin/padding - reset for consistency.
+============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* width/height includes padding & border */
+}
+
+/* ============================================================
+   2. FONT FAMILY
+   font-family: 'FontName', fallback-category;
+   Fallback runs if the font fails to load.
+   Categories: serif | sans-serif | monospace | cursive
+============================================================ */
+body {
+    font-family: 'Ubuntu', sans-serif; /* Google Font, falls back to any sans-serif */
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* ============================================================
+   3. PAGE LAYOUT WRAPPER
+============================================================ */
+.page-wrapper {
+    max-width: 900px;        /* never wider than 900px */
+    margin: 40px auto;       /* centered horizontally */
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.intro-text {
+    text-align: center;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* section card with left accent bar */
+.section {
+    margin-bottom: 60px;
+    padding: 20px;
+    border-left: 4px solid #3498db;
+    background-color: #fff;
+}
+
+/* small uppercase label at top of each section */
+.section .label {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase; /* none | uppercase | lowercase | capitalize */
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.section p {
+    margin: 8px 0;
+}
+
+/* ============================================================
+   4. CSS POSITION
+   Values: static | relative | absolute | fixed | sticky
+   Use top / right / bottom / left offsets with non-static values.
+============================================================ */
+
+/* static: default flow - offsets (top/left etc.) have NO effect */
+.pos-static {
+    position: static;
+    border: 2px solid #95a5a6;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+/* relative: offset FROM its own normal position; still takes up space */
+.pos-relative {
+    position: relative;
+    top: 10px;              /* moves 10px DOWN from its normal spot */
+    left: 20px;             /* moves 20px RIGHT from its normal spot */
+    border: 2px solid #e67e22;
+    padding: 10px;
+    background-color: #fef5e7;
+    margin-bottom: 30px;    /* extra bottom margin to account for the offset */
+}
+
+/* relative parent: makes this the anchor for absolutely positioned children */
+.pos-parent {
+    position: relative;     /* child's absolute offset is measured from here */
+    height: 100px;
+    border: 2px dashed #9b59b6;
+    background-color: #f5eef8;
+    margin-bottom: 12px;
+}
+
+/* absolute: lifted OUT of normal flow, positioned inside nearest relative ancestor */
+.pos-absolute {
+    position: absolute;
+    top: 10px;              /* 10px from top of .pos-parent */
+    right: 10px;            /* 10px from right of .pos-parent */
+    border: 2px solid #9b59b6;
+    padding: 8px;
+    background-color: #d7bde2;
+}
+
+/* sticky: scrolls normally UNTIL it hits the offset, then locks in place */
+.pos-sticky {
+    position: sticky;
+    top: 0;                 /* sticks to top of viewport when scrolled to it */
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    z-index: 10;            /* stays above other elements */
+    margin: 12px 0;
+}
+
+/* fixed: always pinned to viewport (screen), not to document flow */
+.fixed-demo {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* sticky demo area: local scrolling makes sticky behavior easy to observe */
+.sticky-demo-box {
+    height: 180px;
+    overflow-y: auto;
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    background-color: #f8fbff;
+    padding: 0 10px 10px;
+}
+
+.sticky-demo-title {
+    position: sticky;
+    top: 0;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 8px 10px;
+    margin: 0 -10px 10px;
+    font-weight: 700;
+}
+
+.sticky-line {
+    padding: 6px 0;
+    border-bottom: 1px dashed #c8d6e5;
+}
+
+/* ============================================================
+   5. <img> TAG
+   src  = path to image (relative or full URL)
+   alt  = fallback text if image fails (required for accessibility)
+   CSS: control size with width/height + object-fit
+============================================================ */
+.img-demo {
+    width: 100%;             /* fill the section width */
+    max-width: 400px;
+    height: 200px;
+    object-fit: cover;       /* crop to fill box - no stretching */
+    border: 3px solid #3498db;
+    border-radius: 8px;
+    display: block;
+    margin: 10px 0;
+}
+
+/* ============================================================
+   6. BACKGROUND IMAGE
+   background-image    : url() - the image source
+   background-size     : cover | contain | px | %
+   background-repeat   : no-repeat | repeat | repeat-x | repeat-y
+   background-position : center | top | bottom | 50% 50%
+   NOTE: purely decorative - no alt text. Use <img> for meaningful images.
+============================================================ */
+.bg-img-demo {
+    width: 100%;
+    height: 200px;
+    background-image: url('https://letslearn.asia/wp-content/uploads/2025/10/ITtraininginstituteinnepal2.webp');
+    background-size: cover;      /* scale image to fill the entire box */
+    background-repeat: no-repeat; /* do not tile the image */
+    background-position: center;  /* center the image inside the box */
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* ============================================================
+   7. SVG STYLING
+   SVG = Scalable Vector Graphic
+   - Never blurs at any size (vectors, not pixels)
+   - Can be inline in HTML or loaded as <img src="file.svg">
+   - CSS: fill (like color), stroke (like border), width, height
+============================================================ */
+.svg-demo svg {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 10px 0;
+}

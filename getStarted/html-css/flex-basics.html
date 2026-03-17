@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<!-- Flexbox theory + examples for students -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Basics</title>
+  <style>
+    /* 1) Reset for consistent spacing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f9fc;
+      color: #1f2937;
+      line-height: 1.55;
+    }
+
+    .page {
+      width: min(1000px, 92%);
+      margin: 24px auto 40px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .intro {
+      margin-bottom: 20px;
+      color: #4b5563;
+    }
+
+    .card {
+      background: #ffffff;
+      border-left: 4px solid #2563eb;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .notes {
+      margin: 8px 0 0 20px;
+    }
+
+    .notes li {
+      margin: 6px 0;
+    }
+
+    .subheading {
+      margin: 12px 0 6px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .hint {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-top: 6px;
+    }
+
+    .mini {
+      font-size: 0.9rem;
+      color: #374151;
+      margin-top: 6px;
+    }
+
+    /* Base flex container used in all demos */
+    .flex-demo {
+      display: flex;
+      border: 2px dashed #93c5fd;
+      background: #eff6ff;
+      padding: 10px;
+      gap: 10px;
+      margin-top: 10px;
+      min-height: 90px;
+    }
+
+    /* Shared style for all flex items */
+    .item {
+      background: #2563eb;
+      color: #fff;
+      padding: 12px;
+      border-radius: 6px;
+      min-width: 60px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    /* Example 1: Main-axis alignment */
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    /* Example 2: Column direction (main axis becomes vertical) */
+    .column {
+      flex-direction: column;
+      min-height: 180px;
+    }
+
+    /* Example 3: Cross-axis alignment */
+    .align-center {
+      align-items: center;
+      min-height: 130px;
+    }
+
+    .tall {
+      height: 70px;
+    }
+
+    .short {
+      height: 40px;
+    }
+
+    /* Example 4: Wrapping when items do not fit */
+    .wrap {
+      flex-wrap: wrap;
+    }
+
+    /* Example 5: flex-grow shares free space */
+    .grow .item {
+      flex-grow: 1;
+    }
+
+    .grow .item.g3 {
+      flex-grow: 3;
+      background: #0ea5e9;
+    }
+
+    /* Example 6: order changes visual order */
+    .order .first {
+      order: 3;
+      background: #ef4444;
+    }
+
+    .order .second {
+      order: 1;
+      background: #10b981;
+    }
+
+    .order .third {
+      order: 2;
+      background: #f59e0b;
+    }
+
+    /* Practical mini-navbar example */
+    .nav-demo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: #1e293b;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+
+    /* Extra utility classes for detailed option demos */
+    .jc-start { justify-content: flex-start; }
+    .jc-center { justify-content: center; }
+    .jc-end { justify-content: flex-end; }
+    .jc-around { justify-content: space-around; }
+    .jc-evenly { justify-content: space-evenly; }
+
+    .ai-start { align-items: flex-start; min-height: 120px; }
+    .ai-center { align-items: center; min-height: 120px; }
+    .ai-end { align-items: flex-end; min-height: 120px; }
+    .ai-stretch { align-items: stretch; min-height: 120px; }
+
+    .stretch-item {
+      height: auto;
+      min-height: 20px;
+    }
+
+    .wide-wrap {
+      flex-wrap: wrap;
+      height: 190px;
+      align-content: center;
+    }
+
+    .basis-demo .item {
+      flex-basis: 120px;
+    }
+
+    .basis-easy .b100 { flex-basis: 100px; background: #2563eb; }
+    .basis-easy .b160 { flex-basis: 160px; background: #0ea5e9; }
+    .basis-easy .b220 { flex-basis: 220px; background: #0284c7; }
+
+    .grow-easy .g1 { flex-grow: 1; background: #10b981; }
+    .grow-easy .g2 { flex-grow: 2; background: #059669; }
+    .grow-easy .g3 { flex-grow: 3; background: #047857; }
+
+    .shrink-demo {
+      width: 320px;
+      overflow: hidden;
+    }
+
+    .shrink-demo .item {
+      flex-basis: 180px;
+    }
+
+    .shrink-demo .no-shrink {
+      flex-shrink: 0;
+      background: #dc2626;
+    }
+
+    .shrink-easy {
+      width: 360px;
+      overflow: hidden;
+    }
+
+    .shrink-easy .item {
+      flex-basis: 180px;
+    }
+
+    .shrink-easy .keep-size {
+      flex-shrink: 0;
+      background: #ef4444;
+    }
+
+    .shrink-easy .can-shrink {
+      flex-shrink: 1;
+      background: #f59e0b;
+    }
+
+    .flex-short-demo .item {
+      flex: 1; /* same as 1 1 0 */
+      background: #6366f1;
+    }
+
+    .flex-short-demo .featured {
+      flex: 2; /* double share of free space */
+      background: #4f46e5;
+    }
+
+    .axis-column {
+      flex-direction: column;
+      height: 160px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .axis-column .item {
+      width: 80px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Flexbox Theory + Examples</h1>
+    <p class="intro">Flexbox is a 1-dimensional layout system. It arranges items in a row or a column and makes alignment easy.</p>
+
+    <section class="card">
+      <p class="label">Core Theory</p>
+      <ul class="notes">
+        <li><strong>Flex Container:</strong> parent with <code>display: flex;</code></li>
+        <li><strong>Flex Items:</strong> direct children of that parent</li>
+        <li><strong>Main Axis:</strong> direction of <code>flex-direction</code> (row by default)</li>
+        <li><strong>Cross Axis:</strong> perpendicular to main axis</li>
+        <li><strong>justify-content:</strong> aligns items on main axis</li>
+        <li><strong>align-items:</strong> aligns items on cross axis</li>
+      </ul>
+      <p class="hint"><strong>Most common confusion:</strong> axis changes when <code>flex-direction</code> changes. In <code>row</code>, main axis is horizontal. In <code>column</code>, main axis is vertical.</p>
+    </section>
+
+    <section class="card">
+      <p class="label">Detailed Options (What Each One Does)</p>
+
+      <p class="subheading">1) <code>flex-direction</code> (defines main axis)</p>
+      <ul class="notes">
+        <li><code>row</code> (default): left to right</li>
+        <li><code>row-reverse</code>: right to left</li>
+        <li><code>column</code>: top to bottom</li>
+        <li><code>column-reverse</code>: bottom to top</li>
+      </ul>
+      <div class="flex-demo axis-column">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+      </div>
+      <p class="mini">Here main axis is vertical because direction is <code>column</code>.</p>
+
+      <p class="subheading">2) <code>justify-content</code> (main-axis spacing)</p>
+      <p class="mini">Useful values: <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>space-between</code>, <code>space-around</code>, <code>space-evenly</code>.</p>
+      <div class="flex-demo jc-start"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+      <div class="flex-demo jc-center"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+      <div class="flex-demo jc-end"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+      <div class="flex-demo jc-around"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+      <div class="flex-demo jc-evenly"><div class="item">A</div><div class="item">B</div><div class="item">C</div></div>
+
+      <p class="subheading">3) <code>align-items</code> (cross-axis alignment)</p>
+      <p class="mini">Useful values: <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>stretch</code>.</p>
+      <div class="flex-demo ai-start">
+        <div class="item short">1</div><div class="item tall">2</div><div class="item short">3</div>
+      </div>
+      <div class="flex-demo ai-center">
+        <div class="item short">1</div><div class="item tall">2</div><div class="item short">3</div>
+      </div>
+      <div class="flex-demo ai-end">
+        <div class="item short">1</div><div class="item tall">2</div><div class="item short">3</div>
+      </div>
+      <div class="flex-demo ai-stretch">
+        <div class="item stretch-item">1</div><div class="item stretch-item">2</div><div class="item stretch-item">3</div>
+      </div>
+
+      <p class="subheading">4) <code>flex-wrap</code> + <code>align-content</code> (often confusing)</p>
+      <ul class="notes">
+        <li><code>flex-wrap: wrap</code> allows items to move to next line</li>
+        <li><code>align-content</code> works only when there are multiple lines</li>
+        <li><code>align-items</code> aligns items inside each line, not lines themselves</li>
+      </ul>
+      <div class="flex-demo wide-wrap">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        <div class="item">4</div><div class="item">5</div><div class="item">6</div>
+      </div>
+
+      <p class="subheading">5) Item sizing (Beginner Friendly)</p>
+      <ul class="notes">
+        <li><strong>Step 1:</strong> <code>flex-basis</code> = starting width</li>
+        <li><strong>Step 2:</strong> <code>flex-grow</code> = who gets extra free space</li>
+        <li><strong>Step 3:</strong> <code>flex-shrink</code> = who is allowed to shrink when space is small</li>
+        <li><strong>Shortcut:</strong> <code>flex</code> combines grow + shrink + basis</li>
+      </ul>
+
+      <p class="mini"><strong>A) flex-basis example:</strong> different starting widths.</p>
+      <div class="flex-demo basis-easy">
+        <div class="item b100">basis 100</div>
+        <div class="item b160">basis 160</div>
+        <div class="item b220">basis 220</div>
+      </div>
+
+      <p class="mini"><strong>B) flex-grow example:</strong> bigger grow value takes more free space.</p>
+      <div class="flex-demo grow-easy">
+        <div class="item g1">grow 1</div>
+        <div class="item g2">grow 2</div>
+        <div class="item g3">grow 3</div>
+      </div>
+
+      <p class="mini"><strong>C) flex-shrink example:</strong> red box keeps size, orange boxes shrink first.</p>
+      <div class="flex-demo shrink-easy">
+        <div class="item keep-size">shrink 0</div>
+        <div class="item can-shrink">shrink 1</div>
+        <div class="item can-shrink">shrink 1</div>
+      </div>
+
+      <p class="mini"><strong>D) flex shorthand example:</strong> <code>flex: 2</code> gets about double share vs <code>flex: 1</code>.</p>
+      <div class="flex-demo flex-short-demo">
+        <div class="item">flex: 1</div>
+        <div class="item featured">flex: 2</div>
+        <div class="item">flex: 1</div>
+      </div>
+
+      <p class="subheading">6) <code>gap</code> vs spacing values (common confusion)</p>
+      <ul class="notes">
+        <li><code>gap</code> adds fixed space between items only</li>
+        <li><code>space-between/around/evenly</code> distribute remaining free space</li>
+        <li>Use <code>gap</code> for consistent spacing. Use <code>justify-content</code> for alignment and distribution.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <p class="label">Example 1: justify-content</p>
+      <p>Items spread on main axis using <code>space-between</code>.</p>
+      <div class="flex-demo justify-between">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="label">Example 2: flex-direction column</p>
+      <p>Main axis becomes vertical with <code>flex-direction: column</code>.</p>
+      <div class="flex-demo column">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="label">Example 3: align-items center</p>
+      <p>Items align in the center of cross axis.</p>
+      <div class="flex-demo align-center">
+        <div class="item short">S</div>
+        <div class="item tall">T</div>
+        <div class="item short">S</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="label">Example 4: flex-wrap</p>
+      <p>Items move to new line when space is not enough.</p>
+      <div class="flex-demo wrap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="label">Example 5: flex-grow</p>
+      <p>Item C has <code>flex-grow: 3</code>, so it takes 3x more free space than A or B.</p>
+      <div class="flex-demo grow">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item g3">C</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="label">Example 6: order</p>
+      <p>Visual order can change without changing HTML order.</p>
+      <div class="flex-demo order">
+        <div class="item first">First (order 3)</div>
+        <div class="item second">Second (order 1)</div>
+        <div class="item third">Third (order 2)</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="label">Practical Example: Navbar</p>
+      <p>Real use case with logo on left and links on right.</p>
+      <div class="nav-demo">
+        <strong>MySite</strong>
+        <div class="nav-links">
+          <span class="pill">Home</span>
+          <span class="pill">Courses</span>
+          <span class="pill">About</span>
+          <span class="pill">Contact</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!-- DOCTYPE tells the browser this is an HTML5 document -->
+<html lang="en">
+
+<head>
+    <!-- HEAD: invisible to user - holds metadata, styles, and links -->
+    <meta charset="UTF-8">                          <!-- character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive on mobile -->
+    <title>HTML &amp; CSS Basics</title>                <!-- tab title in the browser -->
+
+    <style>
+        /* ============================================================
+           1. CSS RESET
+           Browsers add default margin/padding - reset it for consistency
+        ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* makes width/height include padding & border */
+        }
+
+        /* ============================================================
+           2. ELEMENT SELECTOR  ->  targets every <h1> on the page
+        ============================================================ */
+        h1 {
+            color: #2c3e50;          /* text color (hex code) */
+            text-align: center;      /* left | center | right */
+            font-size: 2rem;         /* rem = relative to root font size */
+            font-weight: bold;       /* normal | bold | 100-900 */
+            margin-bottom: 10px;     /* space BELOW the element */
+        }
+
+        /* ============================================================
+           3. CLASS SELECTOR  ->  dot (.) prefix, reusable on any element
+        ============================================================ */
+        .intro-text {
+            color: #555;             /* medium grey */
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* ============================================================
+           4. THE BOX MODEL
+           Every element is a box:  content -> padding -> border -> margin
+        ============================================================ */
+        .box-demo {
+            width: 200px;            /* content width */
+            height: 100px;           /* content height */
+            padding: 15px;           /* space INSIDE the border */
+            border: 3px solid #e74c3c; /* thickness | style | color */
+            margin: 20px auto;       /* auto left/right = horizontally centered */
+            background-color: #fde8e8; /* fill color of the element */
+            border-radius: 8px;      /* rounds the corners */
+        }
+
+        /* ============================================================
+           5. TYPOGRAPHY  ->  controlling text appearance
+        ============================================================ */
+        .typography-demo {
+            font-family: Arial, sans-serif; /* font stack (fallback after comma) */
+            font-size: 1.1rem;
+            line-height: 1.8;        /* spacing between lines */
+            color: #333;
+            padding: 10px 20px;      /* shorthand: top&bottom | left&right */
+        }
+
+        /* ============================================================
+           6. FLEXBOX  ->  align children in a row or column easily
+        ============================================================ */
+        .flex-container {
+            display: flex;           /* turns on flexbox for children */
+            justify-content: center; /* horizontal: flex-start | center | space-between */
+            align-items: center;     /* vertical:   flex-start | center | flex-end */
+            gap: 20px;               /* space between flex children */
+            height: 150px;
+            background-color: #eaf4fb;
+            border: 2px dashed #3498db;
+            margin: 20px 0;
+        }
+
+        .flex-child {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+            color: white;
+            display: flex;           /* center text inside each child too */
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* ============================================================
+           7. DESCENDANT SELECTOR  ->  targets .label only inside .section
+        ============================================================ */
+        .section .label {
+            font-size: 0.85rem;
+            color: #888;             /* lighter grey */
+            text-transform: uppercase; /* none | uppercase | lowercase | capitalize */
+            letter-spacing: 1px;     /* space between characters */
+            margin-bottom: 8px;
+        }
+
+        /* ============================================================
+           8. PAGE LAYOUT WRAPPER
+        ============================================================ */
+        .page-wrapper {
+            max-width: 800px;        /* never wider than 800px */
+            margin: 40px auto;       /* centered horizontally */
+            padding: 0 20px;         /* breathing room on small screens */
+            font-family: Arial, sans-serif;
+        }
+
+        /* divides sections visually */
+        .section {
+            margin-bottom: 50px;
+            padding: 20px;
+            border-left: 4px solid #3498db; /* left accent bar */
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<!-- BODY: everything visible to the user goes here -->
+<!-- Tip: Ctrl + /  toggles a comment on the selected line -->
+
+    <div class="page-wrapper">
+
+        <!-- HEADING -->
+        <h1>HTML &amp; CSS Basics</h1>
+        <p class="intro-text">A structured reference sheet for students.</p>
+
+        <!-- SECTION 1: BOX MODEL -->
+        <div class="section">
+            <p class="label">Section 1 - The Box Model</p>
+            <!-- width + padding + border + margin make up the full space an element takes -->
+            <div class="box-demo">
+                <p>I am a box!</p>
+                <p>width / padding / border / margin</p>
+            </div>
+        </div>
+
+        <!-- SECTION 2: TYPOGRAPHY -->
+        <div class="section">
+            <p class="label">Section 2 - Typography</p>
+            <p class="typography-demo">
+                CSS controls <strong>font-family</strong>, <em>font-size</em>,
+                line-height, color, and more.
+                Good typography makes content easy to read.
+            </p>
+        </div>
+
+        <!-- SECTION 3: FLEXBOX -->
+        <div class="section">
+            <p class="label">Section 3 - Flexbox Layout</p>
+            <!-- Parent has display:flex - children line up automatically -->
+            <div class="flex-container">
+                <div class="flex-child">A</div>
+                <div class="flex-child">B</div>
+                <div class="flex-child">C</div>
+            </div>
+        </div>
+
+    </div><!-- end .page-wrapper -->
+
+</body>
+</html>

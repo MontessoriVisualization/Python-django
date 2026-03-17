@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<!-- DOCTYPE tells the browser this is an HTML5 document -->
+<html lang="en">
+
+<head>
+    <!-- HEAD: invisible to user - holds metadata, styles, and links -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positions, Images, SVG &amp; Fonts</title>
+
+    <!--
+        EXTERNAL FONT - Google Fonts (HTML <link> way - preferred for speed)
+        Step 1: Go to fonts.google.com, pick a font, copy the <link> tags below.
+        Step 2: Use it in CSS:  font-family: 'Ubuntu', sans-serif;
+        Alternative: use @import inside your .css file (see postion.css line 1)
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--
+        EXTERNAL CSS FILE
+        <link rel="stylesheet" href="filename.css">
+        - rel="stylesheet"  tells the browser this is a CSS file
+        - href              is the path to the CSS file (same folder here)
+        Benefit: one .css file can style many HTML pages.
+    -->
+    <link rel="stylesheet" href="postion.css">
+</head>
+
+<body>
+<!-- BODY: all visible content goes here -->
+<!-- Tip: Ctrl + /  toggles a comment -->
+
+    <!-- Fixed demo: this stays at bottom-right while scrolling -->
+    <button class="fixed-demo" type="button">Fixed Example</button>
+
+    <div class="page-wrapper">
+
+        <!-- HEADING -->
+        <h1>Positions, Images, SVG &amp; Fonts</h1>
+        <p class="intro-text">A structured reference sheet for students.</p>
+
+        <!-- ── SECTION 1: CSS POSITION ─────────────────────────────────── -->
+        <div class="section">
+            <p class="label">Section 1 — CSS Position</p>
+
+            <!--
+                position: static   - default, top/left/right/bottom have no effect
+                position: relative - moves FROM its normal spot; still takes up space
+                position: absolute - removed from flow, placed inside nearest relative parent
+                position: fixed    - removed from flow, locked to the viewport (screen)
+                position: sticky   - acts like relative UNTIL scrolled to offset, then locks
+            -->
+
+            <p><strong>static</strong> (default — offsets do nothing):</p>
+            <div class="pos-static">position: static</div>
+
+            <p><strong>relative</strong> (shifted 10px down, 20px right from normal position):</p>
+            <div class="pos-relative">position: relative &nbsp; top:10px &nbsp; left:20px</div>
+
+            <p><strong>absolute</strong> (pinned inside the dashed relative parent):</p>
+            <div class="pos-parent">
+                I am the relative parent (position: relative)
+                <div class="pos-absolute">position: absolute &nbsp; top:10px &nbsp; right:10px</div>
+            </div>
+
+            <p>
+                <strong>fixed</strong>: stays in the same place on the screen even when the page scrolls.<br>
+                Live demo: the red <strong>Fixed Example</strong> button at the bottom-right.
+            </p>
+
+            <p><strong>sticky</strong>: starts normal, then sticks when its scroll container reaches <code>top: 0</code>.</p>
+            <div class="sticky-demo-box">
+                <div class="sticky-demo-title">Sticky Header (position: sticky; top: 0)</div>
+                <p class="sticky-line">Scroll inside this box to test sticky behavior.</p>
+                <p class="sticky-line">Line 1: Sticky follows normal flow first.</p>
+                <p class="sticky-line">Line 2: Then it locks at the top of this box.</p>
+                <p class="sticky-line">Line 3: It is not fixed to the whole page.</p>
+                <p class="sticky-line">Line 4: Sticky depends on the nearest scrolling ancestor.</p>
+                <p class="sticky-line">Line 5: Great for section headers and table headers.</p>
+                <p class="sticky-line">Line 6: Remove <code>top</code> and sticky will not activate.</p>
+                <p class="sticky-line">Line 7: Use <code>z-index</code> when overlapping content.</p>
+            </div>
+
+            <div class="pos-sticky">Extra page-level sticky example: position: sticky; top: 0</div>
+        </div>
+
+        <!-- ── SECTION 2: IMG TAG ───────────────────────────────────────── -->
+        <div class="section">
+            <p class="label">Section 2 — &lt;img&gt; Tag</p>
+            <!--
+                <img> is a self-closing tag — no closing tag needed.
+                  src : path to the image (relative path or full URL)
+                  alt : shown if image fails to load — REQUIRED for accessibility
+                CSS:
+                  width / height   — control the size
+                  object-fit: cover — crop to fill the box without stretching
+            -->
+            <img
+                class="img-demo"
+                src="https://letslearn.asia/wp-content/uploads/2025/10/ITtraininginstituteinnepal2.webp"
+                alt="IT Training Institute in Nepal"
+            >
+        </div>
+
+        <!-- ── SECTION 3: BACKGROUND IMAGE ─────────────────────────────── -->
+        <div class="section">
+            <p class="label">Section 3 — Background Image (bg-img)</p>
+            <!--
+                background-image is a CSS property, not an HTML tag.
+                The element has no <img> inside it — the image is decorative.
+                Key CSS properties:
+                  background-image    : url('path or URL')
+                  background-size     : cover | contain | 200px | 50%
+                  background-repeat   : no-repeat | repeat | repeat-x | repeat-y
+                  background-position : center | top | bottom | left | right
+                Use <img> with alt text for meaningful/informative images.
+            -->
+            <div class="bg-img-demo"></div>
+        </div>
+
+        <!-- ── SECTION 4: SVG ───────────────────────────────────────────── -->
+        <div class="section">
+            <p class="label">Section 4 — SVG (Scalable Vector Graphic)</p>
+            <!--
+                SVG = XML-based vector image format.
+                Unlike JPG/PNG (pixels), SVG uses math — never blurs at any size.
+                Two ways to use SVG:
+                  1. Inline SVG: paste the <svg>...</svg> directly in HTML (styleable with CSS)
+                  2. As an image: <img src="icon.svg" alt="icon">
+
+                CSS for inline SVG:
+                  fill   = color of the shape (like color for text)
+                  stroke = outline color (like border)
+                  width / height = size
+            -->
+            <div class="svg-demo">
+                <!-- Inline SVG: book icon -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M4 19V6.2C4 5.08 4 4.52 4.22 4.09C4.41 3.72 4.72 3.41 5.09 3.22
+                           C5.52 3 6.08 3 7.2 3H16.8C17.92 3 18.48 3 18.91 3.22
+                           C19.28 3.41 19.59 3.72 19.78 4.09C20 4.52 20 5.08 20 6.2V17
+                           H6C4.9 17 4 17.9 4 19ZM4 19C4 20.1 4.9 21 6 21H20
+                           M9 7H15M9 11H15M19 17V21"
+                        stroke="#e74c3c"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none"
+                    />
+                </svg>
+            </div>
+        </div>
+
+        <!-- ── SECTION 5: FONT FAMILY & EXTERNAL FONT ──────────────────── -->
+        <div class="section">
+            <p class="label">Section 5 — Font Family &amp; External Font</p>
+            <!--
+                font-family: 'FontName', fallback-category;
+                  The fallback runs if the custom font fails to load.
+                  Built-in categories: serif | sans-serif | monospace | cursive
+
+                External fonts (Google Fonts) — 2 ways to import:
+
+                WAY 1 — <link> in HTML <head> (preferred, faster):
+                  <link href="https://fonts.googleapis.com/css2?family=Ubuntu..." rel="stylesheet">
+
+                WAY 2 — @import at the TOP of your .css file:
+                  @import url('https://fonts.googleapis.com/css2?family=Ubuntu...');
+
+                Then use in CSS:
+                  font-family: 'Ubuntu', sans-serif;
+            -->
+            <p style="font-family: 'Ubuntu', sans-serif; font-size: 1.2rem;">
+                This uses <strong>Ubuntu</strong> — loaded from Google Fonts.
+            </p>
+            <p style="font-family: serif; font-size: 1.2rem; margin-top: 10px;">
+                This uses <strong>serif</strong> — browser built-in (e.g. Times New Roman).
+            </p>
+            <p style="font-family: monospace; font-size: 1.2rem; margin-top: 10px;">
+                This uses <strong>monospace</strong> — every character is the same width.
+            </p>
+        </div>
+
+    </div><!-- end .page-wrapper -->
+
+</body>
+</html>

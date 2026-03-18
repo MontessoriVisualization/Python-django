@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS</title>
@@ -8,8 +6,10 @@
         header{
             display: flex;
             justify-content: space-between;
-            
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
+        
         #home{
             display: flex;
             justify-content: space-between;
@@ -20,44 +20,150 @@
             display: flex;
             gap: 10vh;
         }
+
+        li{
+            list-style: none;
+        }
+        a{
+            color: black;
+            text-decoration:none;
+        }
+        h2{
+            font-size: 2rem;
+            color:orangered;
+        }
+        h2 span{
+            color:black;
+            display: block;
+        }
+        .regester-btn:hover{
+color: black;
+border: 1px solid orangered;
+background-color: white;
+        }
+.regester-btn{
+       padding: 10px 20px;
+    border-radius: 11px;
+    background: orangered;
+    color: white;
+    border: none;
+}
+#container1{
+    width: 49%;
+}
+p{
+    line-height: 18px;
+    font-size: 0.9rem;
+}
+.logo{
+    font-size: 2.4rem;
+    font-weight:900 ;
+}
+.btns{
+    margin-bottom: 10px;
+}
+#container2{
+   background-image: url(https://letslearn.asia/wp-content/uploads/2025/10/ITtraininginstituteinnepal2.webp);
+    width: 631px;
+    height: 420px;
+    background-repeat: no-repeat;
+position: relative;
+}
+    .box{
+           position: absolute;
+    top: 0px;
+    left: -44px;
+    width: 200px;
+    height: 100px;
+    border-radius: 6px;
+    background-color: white;
+    border: 1px solid orangered;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0px 6px;
+
+    }
+    .box svg{
+        width: 50px;
+        height: 50px;
+    }
+    .box h1{
+            font-size: 1.3rem;
+    font-weight: 900;
+
+    }
+    .box span{
+        font-size: 0.9rem;
+    }
     </style>
 
 </head>
-<body>
+<body style="
+    font-family: monospace;
+">
     <header>
-       <div class="logo">
-        logo
-       </div>
+       <div class="logo">Logo</div>
        <nav>
         <ul>
-            <li> <a href="#home">Home</a></li>
+            <li style="
+    list-style: none;
+"> <a href="#home" style="
+    color: black;
+    text-decoration: none;
+">Home</a></li>
             <li> <a href="#courses">Courses</a></li>
             <li> <a href="#events">Events</a></li>
             <li> <a href="#about-us">About us</a></li>
         </ul>
        </nav>
-       <button><a href="contact">contact</a></button>
+       <button style="
+    padding: 10px 20px;
+    border-radius: 11px;
+    color: white;
+    background: black;
+">Contacts
+</button>
     </header>
-    <main>
-    <section id="home-section">
+    <main style="
+    padding: 10px 20px;
+">
+    <section id="home-section" style="
+    display: flex;
+">
         <div id="container1">
-            <h2>Best</h2>
-            <h4>IT Training Institute for IT & Computer Training In Nepal</h4>
+            <h2><span>Best
+</span>
+            IT Training Institute for IT &amp; Computer Training In Nepal</h2>
+    
             <p>LetsLearn is the best computer training and IT training institute in Kathmandu, Nepal established in 2015 with the goal of providing professional IT training and computer training in Kathmandu and various parts of Nepal. We are dedicated to the goal of educating and enhancing IT skills through rigorous computer training based on our latest computer courses.
 
 Get expert guidance from experienced trainers along with internship opportunities and certification to experience the best learning experience.</p>
 
-<Button><a href="#">Enroll Now</a></Button>   
-<button><a href="#"View all courses></a></button>    
+<div class="btns">
+    <button style="
+    padding: 10px 20px;
+    border-radius: 11px;
+    color: white;
+    background: black;
+">Enroll Now
+</button>   
+<button class="regester-btn">Regester Now
+</button>  
+</div>  
 </div>
 <div id="container2">
-    image
+  <div class="box">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#a2a0a0"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    <div class="box-info">
+        <h3>50+</h3>
+        <span>Training Cources</span>
+    </div>
+  </div>
 </div>
 
     </section>
     </main>
-    <script>
 
-    </script>
-</body>
-</html>
+
+</body></html>

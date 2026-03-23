@@ -29,6 +29,7 @@
             display: flex;
             justify-content: space-between;
             align-content: space-around;
+            gap: 10px;
             position: absolute;
             /* uses relative parent */
             top: 10px;
@@ -62,6 +63,13 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
+        .flower {
+            width: 10%;
+            height: 10%;
+            border-radius: 5px;
+            object-fit: cover;
+}
     </style>
 </head>
 
@@ -77,8 +85,16 @@
         <div class="card-content">
             <h3>Simple Card</h3>
             <p>This is an easy card using flex and position.</p>
-            <button class="btn">Click</button>
+            <div>
+                <img class="flower" ,
+                    src="https://images.greetingsisland.com/images/cards/get-well/caring thoughts.jpg?auto=compress">
+
+            </div class="flower">
+
+            <div data-v-ae646bb1="" id="elm-highlighted-bgimg" class="highlight"></div>
         </div>
+        <button class="btn">Click</button>
+    </div>
     </div>
 
 </body>

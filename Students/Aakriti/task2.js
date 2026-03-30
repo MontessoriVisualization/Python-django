@@ -35,6 +35,7 @@ else{
     console.log(`Insufficient Balance!!! You need ${needBalance} more`)
 }
 
+
 let orderId=(Math.random()*100)+1
 orderId=Math.floor(orderId)
 console.log(`OrderID ${orderId} confrimed. Thankyou for shopping!!`)

@@ -39,4 +39,3 @@ Functions: They practice passing arguments (name, price) effectively.
 Objects: They learn to store grouped data instead of just single variables.
 Spread: Real-world use case (adding extra specs to a product).
 Nested Access: Reviewing how to dig into data (user.permissions.canEdit).
-Gemini 3 Pro (Preview) • 1x

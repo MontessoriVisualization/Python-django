@@ -1,4 +1,5 @@
 const array = [1, "two", true, 4, 5];
+            //    0,   1   , 2   , 3, 4
 const newArray = new Array(1, "two", true, 4, 5);
 
 console.log(array);

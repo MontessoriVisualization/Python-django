@@ -26,7 +26,8 @@ let p1=createProduct("Laptop",1200,10)
 let p2=createProduct("Mouse",25,50)
 let p3=createProduct("Keyboard",100,20)
 
-// inventory=[{...p1,...p2,...p3}]//all data was overridden by `p3
+inventory=[{...p1,...p2,...p3}]//all data was overridden by `p3
+console.log(inventory)
 inventory=[
     {name:"Laptop",
         price:1200,

@@ -4,7 +4,8 @@ function add(a=3, b=2) {// a and b are parameters
 }
 add(5, 10) // 5 and 10 are arguments
 add()
-
+const value = prompt("enter the value")
+console.log("value:",value)
 function greet(name) {
     return `Hello, ${name}! Welcome to JavaScript functions.`;
 }

@@ -21,7 +21,7 @@ year = 2027;       // var can change
 console.log("updated city =", city);
 console.log("updated year =", year);
 
-// 2) Primitive data types
+// 2 Primitive data types
 // string, number, boolean, null, undefined, (bigint, symbol)not included here
 
 const userName = "Sauga";

@@ -26,9 +26,25 @@ let p1=createProduct("Laptop",1200,10)
 let p2=createProduct("Mouse",25,50)
 let p3=createProduct("Keyboard",100,20)
 
-inventory=[p1,p2,p3]//all data was overridden by `p3
+// inventory=[{...p1,...p2,...p3}]//all data was overridden by `p3`
+// console.log(inventory)
+inventory=[
+    {name:"Laptop",
+        price:1200,
+        quantity:10
+    },
+    {name:"Mouse",
+        price:25,
+        quantity:50
+    },
+    {name:"Keyboard",
+        price:100,
+        quantity:20
+    }
 
-// Updating Data (Accessing Constraints)
+]
+console.log(inventory)
+// Updating Data (Accessing Constraints):
 
 // Oh no! The "Mouse" price was wrong. Access the second item in your inventory array and update its price to 30.
 // Access the "Laptop" (first item) and add a new property category with the value "Electronics".
@@ -48,7 +64,7 @@ const extraDetails={
     color:"Silver"
 }
 
-let updatedLaptop={...inventory[0],...extraDetails}
+let updatedLaptop = { ...inventory[0], ...extraDetails };
 console.log(updatedLaptop)
 
 // The Sale Function (Arrow Functions):
@@ -72,6 +88,7 @@ console.log("The total value of Keyboard is",totalValOfKeyboard)
 // Write an if statement: If adminUser.permissions.canEdit is true, console log "Access Granted: Inventory updated."
 // Why this works:
 // Functions: They practice passing arguments (name, price) effectively.
+
 // Objects: They learn to store grouped data instead of just single variables.
 // Spread: Real-world use case (adding extra specs to a product).
 // Nested Access: Reviewing how to dig into data (user.permissions.canEdit).

@@ -44,6 +44,12 @@ const userNames = letslearnUsersObject.filter(function(user){
 }).reduce(function(acc,user){
     return acc + user
 },0)
+
+
+
+
+
+
 console.log(userNames)
 // const userNamesFor = [];
 // function getUserNames(users){

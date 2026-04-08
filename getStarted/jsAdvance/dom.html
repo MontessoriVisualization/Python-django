@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            padding: 10px 20px;
+            font-size: 1.1em;
+            color:white;
+            background-color: #007BFF;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn"  >Click Me</button>
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, repellendus quasi!
+</div>
+<div class="second">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, repellendus quasi!
+</div>
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, repellendus quasi!
+</div>
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, repellendus quasi!
+</div>
+
+</body>
+<script>
+    //dom (Documnet object model ) ever element is an object in js
+    //we can manipulate the element using js
+    const btn = document.querySelector(".btn");
+    // btn.addEventListener("work",function)
+    btn.addEventListener("click",handelClick);
+ function handelClick(){
+ if(btn.textContent === "Click Me"){
+       btn.style.backgroundColor = "green";
+    btn.textContent = "Clicked";
+ }
+ else{
+    btn.style.backgroundColor = "#007BFF";
+    btn.textContent = "Click Me";
+ }
+
+}
+ btn.addEventListener("mouseover",function(){
+    if(btn.textContent === "Clicked"){
+    }
+    else{
+        btn.style.backgroundColor = "red";
+    }
+ })
+ btn.addEventListener("mouseout",function(){
+    if(btn.textContent === "Click me"){
+
+        btn.style.backgroundColor = "#007BFF";
+    }
+ })
+
+
+//click ,hover ,mouseout ,keydown ,
+
+  
+
+
+
+
+</script>
+
+</html>

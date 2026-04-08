@@ -45,40 +45,40 @@ for(let i=0;i<students.length;i++){
 
 }
 console.log(avgmarks)
-let highestMark = avgmarks[0]
-for(let i=0;i<avgmarks.length;i++){
-    if(avgmarks[i]>highestMark){
-        highestMark = avgmarks[i]
-    }
-}
-console.log("Highest Mark:", highestMark)
-    let lowestMark = avgmarks[0]
+// let highestMark = avgmarks[0]
+// for(let i=0;i<avgmarks.length;i++){
+//     if(avgmarks[i]>highestMark){
+//         highestMark = avgmarks[i]
+//     }
+// }
+// console.log("Highest Mark:", highestMark)
+//     let lowestMark = avgmarks[0]
 
-for(let i=0;i<avgmarks.length;i++){
-    if(avgmarks[i]<lowestMark){
-        lowestMark = avgmarks[i]
-    }
-}
-console.log("Lowest Mark:", lowestMark)
+// for(let i=0;i<avgmarks.length;i++){
+//     if(avgmarks[i]<lowestMark){
+//         lowestMark = avgmarks[i]
+//     }
+// }
+// console.log("Lowest Mark:", lowestMark)
 
- const accArray=[]
-for (let index = 0; index < avgmarks.length; index++) {
-    let highestMark = avgmarks[0]
-    for(let j=0;j<avgmarks.length;j++){
-    if(avgmarks[j]>highestMark){
-        highestMark = avgmarks[j]
-    }
+//  const accArray=[]
+// for (let index = 0; index < avgmarks.length; index++) {
+//     let highestMark = avgmarks[0]
+//     for(let j=0;j<avgmarks.length;j++){
+//     if(avgmarks[j]>highestMark){
+//         highestMark = avgmarks[j]
+//     }
 
-}
+// }
 
-    accArray.push(highestMark)
-    const index = avgmarks.indexOf(highestMark)
-    avgmarks[index] = -1
-console.log(avgmarks)
+//     accArray.push(highestMark)
+//     const index = avgmarks.indexOf(highestMark)
+//     avgmarks[index] = -1
+// console.log(avgmarks)
 
 
     
-}
-console.log("Sorted Marks:", accArray)
+// }
+// console.log("Sorted Marks:", accArray)
 
 

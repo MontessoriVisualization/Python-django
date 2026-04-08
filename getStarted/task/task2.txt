@@ -7,6 +7,7 @@ Instructions for Students:
 Setup the Inventory (Array of Objects):
 
 Create an empty array called inventory.
+
 Create a function called createProduct(name, price, quantity).
 This function should return an object with those three properties.
 Call this function three times to create these items and add them to your inventory array:

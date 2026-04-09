@@ -84,7 +84,7 @@ for (let i=0; i<students.length;i++){
         console.log(students[i].name)//with meassage
     }
 }
-//top performer
+//top performer//to use students updated array
 let topPerformer=avgmarks[0]
 for (let i=0; i<avgmarks.length;i++){
     if(avgmarks[i]>topPerformer){
@@ -106,30 +106,31 @@ for(let i=0; i<avgmarks.length;i++){
 console.log(`The loe Scorer is :  ${lowScorer}`)
 
 // Check eligibility (average > 40 AND attendance > 75%)
-let eligibility=[]
+
 for(let i=0; i<avgmarks.length;i++){
     if(students[i].Average_Marks>40 && students[i].attendance >75){
-        eligibility.push("PASS")
+        students[i].eligibility="PASS"
     }
     else{
-        eligibility.push("FAIL")
+        students[i].eligibility="FAIL"
     }
 }
-console.log("The pass/fail eligibilty of each student; ",eligibility)
+console.log(students)
+
 
 //again updating with results
-for(let i=0; i<students.length;i++){
-    students[i].Result=eligibility[i]
+// for(let i=0; i<students.length;i++){
+//     students[i].Result=eligibility[i]
     
-}
-console.log("Updated Students Profile with grade and avgmarks:",students)
+// }
+// console.log("Updated Students Profile with grade and avgmarks:",students)
 
 
 //pass count
 let pcount=0;
-for(let i=0;i<eligibility.length;i++){
+for(let i=0;i<students[i].length;i++){
 
-    if(eligibility[i]==="PASS"){
+    if(students.eligibility[i]==="PASS"){
         pcount+=1
     }
 }
@@ -137,9 +138,9 @@ console.log("The pass count in letslearn is: ",pcount)
 
 //fail count
 let fcount=0;
-for(let i=0;i<eligibility.length;i++){
+for(let i=0;i<students[i].length;i++){
 
-    if(eligibility[i]==="PASS"){
+    if(students.eligibility[i]==="PASS"){
         continue;
     }
     else{

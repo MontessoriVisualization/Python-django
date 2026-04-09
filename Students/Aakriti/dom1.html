@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">Change Background</button>
+</body>
+<script>
+    const colors = ["red","green","blue","yellow","orange"];
+    const btn = document.querySelector(".btn");
+    let lastindex = 0;
+btn.addEventListener("click",()=>{
+
+    let random = Math.floor(Math.random()*colors.length);//range 0 ,0, 0
+    console.log(random)
+
+// for(let i=0;i<colors.length;i++){// 0,0
+//     if(random === lastindex){
+//         random = Math.floor(Math.random()*colors.length);
+//         i=-1;
+//     }
+// }
+//easy infinite loop
+
+
+
+// 0===1
+
+for (let index = 0; index < colors.length; index--) {
+    if(random === lastindex){
+        random = Math.floor(Math.random()*colors.length);
+    }
+    else{
+        break;
+    }
+    
+}
+
+
+console.log(random)
+document.body.style.backgroundColor = colors[random];
+lastindex = random;
+
+})
+
+
+
+
+</script>
+</html>

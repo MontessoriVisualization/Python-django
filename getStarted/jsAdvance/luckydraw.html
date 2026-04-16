@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky Draw Slot Machine</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 50% 30%, #1c0e00 0%, #080400 100%);
+    }
+
+    /* ─── CREDITS PANEL ─── */
+    .credits-panel {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 14px;
+    }
+    .cred-box {
+      background: #1a1000;
+      border: 2px solid #c9a012;
+      border-radius: 8px;
+      padding: 6px 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255,180,0,0.2), inset 0 0 8px rgba(0,0,0,0.6);
+    }
+    .cred-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #c9a012;
+      text-transform: uppercase;
+    }
+    .cred-value {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffe040;
+      text-shadow: 0 0 8px rgba(255,200,0,0.7);
+    }
+
+    /* ─── MACHINE STAGE ─── */
+    .machine-stage {
+      display: flex;
+      align-items: center;
+    }
+
+    /* ─── CONTAINER (bg image) ─── */
+    .container {
+      position: relative;
+      background-image: url(realistic-slot-machine-isolated-vector.webp);
+      background-position: center;
+      background-size: cover;
+      height: 310px;
+      width: 441px;
+      flex-shrink: 0;
+    }
+
+    /* ─── REEL WINDOWS ─── */
+    .slot-machine {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -52%);
+    }
+
+    .slot {
+      width: 89px;
+      height: 171px;
+      margin: 0 10px;
+      margin-bottom: 41px;
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+      background: #f2e8c8;
+      box-shadow:
+        inset 0 0 24px rgba(0,0,0,0.28),
+        inset 0 0 6px rgba(0,0,0,0.15);
+    }
+
+    /* ─── REEL STRIP ─── */
+    .reel-strip {
+      display: flex;
+      flex-direction: column;
+      transform: translateY(0px);
+      will-change: transform;
+    }
+
+    .symbol-cell {
+      width: 89px;
+      height: 57px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      flex-shrink: 0;
+      background: #f2e8c8;
+    }
+
+    /* ─── WIN PAYLINE ─── */
+    .payline {
+      position: absolute;
+      top: 57px;
+      left: 0; right: 0;
+      height: 57px;
+      pointer-events: none;
+      z-index: 3;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+    .payline.win {
+      opacity: 1;
+      border-color: #ffd700;
+      background: rgba(255, 215, 0, 0.12);
+      animation: payFlash 0.35s ease-in-out infinite alternate;
+    }
+    @keyframes payFlash {
+      from { background: rgba(255,215,0,0.08); border-color: rgba(255,100,0,0.7); }
+      to   { background: rgba(255,215,0,0.25); border-color: rgba(255,220,0,1); }
+    }
+
+    /* ─── GLASS OVERLAY ─── */
+    .slot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      pointer-events: none;
+      z-index: 2;
+      background:
+        linear-gradient(
+          to bottom,
+          rgb(60 55 55 / 58%)    0%,
+          rgb(30 27 27 / 18%)   25%,
+          rgb(200 185 185 / 0%) 50%,
+          rgb(30 27 27 / 18%)   75%,
+          rgb(0 0 0 / 52%)     100%
+        ),
+        linear-gradient(
+          to right,
+          rgb(255 248 248 / 28%) 0%,
+          rgb(0 0 0 / 0%)        45%
+        );
+      box-shadow:
+        inset 0  2px  9px rgba(255,255,255,0.55),
+        inset 0 -4px 10px rgba(0,0,0,0.35),
+        inset 2px 0   8px rgba(255,255,255,0.18);
+    }
+
+    /* ─── WIN FLASH ON SLOT ─── */
+    @keyframes winFlash {
+      0%,100% { filter: brightness(1); }
+      50%     { filter: brightness(1.45) saturate(1.4); }
+    }
+    .slot.flashing { animation: winFlash 0.3s ease-in-out 5; }
+
+    /* ─── RESULT TEXT ─── */
+    #result {
+      margin-top: 12px;
+      min-height: 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      color: #ffe040;
+      letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(255,200,0,0.8);
+      animation: none;
+    }
+    #result.win-msg { animation: resultPulse 0.6s ease-in-out infinite alternate; }
+    @keyframes resultPulse {
+      from { color: #ffe040; text-shadow: 0 0 10px rgba(255,200,0,0.6); }
+      to   { color: #fff; text-shadow: 0 0 20px rgba(255,220,80,1); }
+    }
+
+    /* ─── LEVER WRAP ─── */
+    .lever-wrap {
+      width: 80px;
+      height: 310px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .mount-bracket {
+      position: absolute;
+      left: 6px;
+      top: 72px;
+      width: 30px;
+      height: 166px;
+      border-radius: 8px 4px 4px 8px;
+      background: linear-gradient(90deg,
+        #6b5200 0%, #c9a012 25%, #f5d76e 50%, #c9a012 75%, #6b5200 100%
+      );
+      box-shadow:
+        inset -3px 0 6px rgba(0,0,0,0.4),
+        2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* screws on bracket */
+    .mount-bracket::before,
+    .mount-bracket::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff9c0, #a07808);
+      box-shadow: inset 1px 1px 2px rgba(255,255,255,0.5), inset -1px -1px 2px rgba(0,0,0,0.5);
+    }
+    .mount-bracket::before { top: 18px; }
+    .mount-bracket::after  { bottom: 18px; }
+
+    /* pivot point */
+    .pivot {
+      position: absolute;
+      left: 24px;
+      top: 72px + 83px;
+      top: 155px;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff9c0, #c9a012, #6b5200);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6), inset 1px 1px 4px rgba(255,255,255,0.5);
+      z-index: 4;
+    }
+
+    /* 3-D scene */
+    .scene {
+      perspective: 500px;
+      perspective-origin: 50% 35%;
+      position: absolute;
+      left: 28px;
+      top: 0;
+      width: 58px;
+      height: 310px;
+    }
+
+    .lever-arm-wrap {
+      position: absolute;
+      left: 0; top: 24px;
+      width: 58px;
+      height: 240px;
+      transform-origin: 50% 87%;
+      transform-style: preserve-3d;
+      transition: transform 0.14s ease;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .lever-arm-wrap.pulled {
+      transform: rotateX(44deg);
+    }
+    .lever-arm-wrap.springing {
+      transition: transform 0.48s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .lever-rod {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 16px;
+      height: 215px;
+      border-radius: 10px;
+      background: linear-gradient(90deg,
+        #6b5200 0%, #b8900a 18%, #f5d76e 42%,
+        #fff5a0 50%, #f0c93a 62%, #b8900a 82%, #6b5200 100%
+      );
+      box-shadow:
+        2px 2px 10px rgba(0,0,0,0.55),
+        -1px 0  4px rgba(255,255,255,0.18);
+    }
+
+    .rod-ring {
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      width: 26px; height: 15px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ffe980 0%, #9e7508 100%);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.45);
+      z-index: 2;
+    }
+    .rod-ring.r1 { top: 46px; }
+    .rod-ring.r2 { top: 126px; }
+
+    .handle-ball {
+      position: absolute;
+      left: 50%; top: 0;
+      transform: translateX(-50%);
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 33% 27%,
+        #ffcaca 0%, #f42020 36%, #920808 76%, #540000 100%
+      );
+      box-shadow:
+        0 6px 18px rgba(0,0,0,0.65),
+        inset 3px 3px 8px rgba(255,140,140,0.5),
+        inset -3px -3px 8px rgba(0,0,0,0.5);
+      z-index: 3;
+    }
+    .handle-ball::after {
+      content: '';
+      position: absolute;
+      top: 9px; left: 11px;
+      width: 16px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.42);
+      transform: rotate(-30deg);
+      filter: blur(1.5px);
+    }
+  </style>
+</head>
+<body>
+
+<div class="credits-panel">
+  <div class="cred-box">
+    <div class="cred-label">Credits</div>
+    <div class="cred-value" id="credits">100</div>
+  </div>
+  <div class="cred-box">
+    <div class="cred-label">Bet</div>
+    <div class="cred-value">10</div>
+  </div>
+  <div class="cred-box">
+    <div class="cred-label">Win</div>
+    <div class="cred-value" id="winDisplay">0</div>
+  </div>
+</div>
+
+<div class="machine-stage">
+
+  <div class="container">
+    <div class="slot-machine">
+      <div class="slot" id="slot0">
+        <div class="reel-strip" id="reel0"></div>
+        <div class="payline" id="pl0"></div>
+      </div>
+      <div class="slot" id="slot1">
+        <div class="reel-strip" id="reel1"></div>
+        <div class="payline" id="pl1"></div>
+      </div>
+      <div class="slot" id="slot2">
+        <div class="reel-strip" id="reel2"></div>
+        <div class="payline" id="pl2"></div>
+      </div>
+    </div>
+    <audio id="audio"><source src="successful-slot-game.mp3" type="audio/mpeg"></audio>
+  </div>
+
+  <div class="lever-wrap">
+    <div class="mount-bracket"></div>
+    <div class="pivot"></div>
+    <div class="scene">
+      <div class="lever-arm-wrap" id="lever">
+        <div class="handle-ball"></div>
+        <div class="rod-ring r1"></div>
+        <div class="rod-ring r2"></div>
+        <div class="lever-rod"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="result"></div>
+
+<script>
+  const SYMS   = ["🍒","🍋","🍇","🍉","🍊","⭐","🔔"];
+  const CELL_H = 57;
+  const LEN    = 45;
+  const TARGET = LEN - 6;
+
+  let credits = 100, isSpinning = false;
+  const credEl  = document.getElementById('credits');
+  const winEl   = document.getElementById('winDisplay');
+  const resultEl= document.getElementById('result');
+  const lever   = document.getElementById('lever');
+  const audio   = document.getElementById('audio');
+  const reelEls = [0,1,2].map(i => document.getElementById('reel'+i));
+  const plEls   = [0,1,2].map(i => document.getElementById('pl'+i));
+  const slotEls = [0,1,2].map(i => document.getElementById('slot'+i));
+
+  // Build a reel strip, place `finalSym` at TARGET index, return the strip array
+  function buildStrip(reelEl, finalSym) {
+    reelEl.innerHTML = '';
+    const strip = [];
+    for (let i = 0; i < LEN; i++) {
+      const s = (i === TARGET) ? finalSym : SYMS[Math.floor(Math.random() * SYMS.length)];
+      strip.push(s);
+      const cell = document.createElement('div');
+      cell.className = 'symbol-cell';
+      cell.textContent = s;
+      reelEl.appendChild(cell);
+    }
+    return strip;
+  }
+
+  // translateY so that cell `idx` sits in the centre row (row 1 of 3)
+  // centre row top = 57px within the 171px viewport
+  // cell idx top on strip = idx * CELL_H
+  // we want strip top = 57 - idx*CELL_H  →  translateY = -(idx-1)*CELL_H
+  const yFor = idx => -(idx - 1) * CELL_H;
+
+  // Initialise reels at rest showing a cherry in the centre
+  reelEls.forEach(r => {
+    buildStrip(r, "🍒");
+    r.style.transition = 'none';
+    r.style.transform  = `translateY(${yFor(1)}px)`;
+  });
+
+  function spin() {
+    if (isSpinning || credits < 10) {
+      if (credits < 10) resultEl.textContent = 'Not enough credits!';
+      return;
+    }
+    isSpinning = true;
+    credits -= 10;
+    credEl.textContent = credits;
+    winEl.textContent  = 0;
+    resultEl.className = '';
+    resultEl.textContent = '';
+    plEls.forEach(p  => p.classList.remove('win'));
+    slotEls.forEach(s => s.classList.remove('flashing'));
+
+    // Pick final symbols
+    const finals = [0,1,2].map(() => SYMS[Math.floor(Math.random() * SYMS.length)]);
+
+    // Build new strips and reset position instantly
+    reelEls.forEach((r, i) => {
+      r.style.transition = 'none';
+      r.style.transform  = 'translateY(0px)';
+      buildStrip(r, finals[i]);
+    });
+
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+
+    // Kick off spin with staggered stops per reel
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      reelEls.forEach((r, i) => {
+        const dur = 1900 + i * 400;       // each reel stops later
+        r.style.transition = `transform ${dur}ms cubic-bezier(0.08, 0.55, 0.28, 1.0)`;
+        r.style.transform  = `translateY(${yFor(TARGET)}px)`;
+      });
+
+      // Evaluate after last reel settles
+      const totalTime = 1900 + 2 * 400 + 300;
+      setTimeout(() => {
+        const won = finals[0] === finals[1] && finals[1] === finals[2];
+        if (won) {
+          const prize = 50;
+          credits += prize;
+          credEl.textContent = credits;
+          winEl.textContent  = prize;
+          resultEl.textContent = '🎰 JACKPOT!  +50 credits';
+          resultEl.className   = 'win-msg';
+          plEls.forEach(p  => p.classList.add('win'));
+          slotEls.forEach(s => s.classList.add('flashing'));
+          audio.currentTime = 0;
+          audio.play().catch(() => {});
+        } else {
+          resultEl.textContent = 'No match — pull again!';
+        }
+        isSpinning = false;
+      }, totalTime);
+    }));
+  }
+
+  // ── Lever interactions ──
+  function pullLever(e) {
+    e.preventDefault();
+    lever.classList.remove('springing');
+    lever.classList.add('pulled');
+    spin();
+  }
+  function releaseLever() {
+    if (!lever.classList.contains('pulled')) return;
+    lever.classList.remove('pulled');
+    lever.classList.add('springing');
+    setTimeout(() => lever.classList.remove('springing'), 520);
+  }
+
+  lever.addEventListener('mousedown', pullLever);
+  lever.addEventListener('touchstart', pullLever, { passive: false });
+  window.addEventListener('mouseup', releaseLever);
+  window.addEventListener('touchend', releaseLever);
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fullpage {
+            height: 100vh; /* full viewport height */
+            display: flex;
+            justify-content: center; /* horizontal centering */
+            align-items: center;     /* vertical centering */
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="fullpage">
+    <button>Click me</button>
+</body>
+<script>
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        alert('Button clicked!');
+        document.body.style.backgroundColor = 'lightblue'; // Change background color on click
+    });
+    
+
+</script>
+</html>

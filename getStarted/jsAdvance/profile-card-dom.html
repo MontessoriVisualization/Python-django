@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 15px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f46fb2, #f2998b);
+    }
+
+    .cards-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .user-card {
+      width: 340px;
+      max-width: 100%;
+      position: relative;
+      background: #f5f5f5;
+      border-radius: 20px;
+      padding: 112px 28px 28px;
+      text-align: center;
+      box-shadow: 0 18px 35px rgba(38, 21, 44, 0.18);
+    }
+
+    .user-image-box {
+      position: absolute;
+      top: -89px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 178px;
+      height: 178px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(43, 23, 46, 0.3);
+    }
+
+    .user-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .user-name {
+      color: #555;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-top: 8px;
+      line-height: 1.1;
+    }
+
+    .user-role {
+      color: #9a9a9a;
+      margin-top: 8px;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .user-stats {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .stats-item {
+      flex: 1;
+    }
+
+    .stats-number {
+      color: #555;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .stats-text {
+      color: #9a9a9a;
+      font-size: 0.85rem;
+      margin-top: 4px;
+      line-height: 1.1;
+    }
+
+    .user-actions {
+      margin-top: 28px;
+      display: flex;
+      gap: 14px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 8px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: #f55493;
+      box-shadow: 0 8px 15px rgba(245, 84, 147, 0.35);
+    }
+
+    .btn-secondary {
+      color: #757575;
+      background: #fff;
+      border-color: #d4d4d4;
+    }
+  </style>
+</head>
+<body>
+  <section class="cards-container" id="cardsContainer"></section>
+
+  <script>
+    const profileList = [
+      {
+        name: 'Alina Smith',
+        role: 'Senior UX / UI Designer',
+        posts: '342',
+        followers: '120k',
+        following: '285',
+        image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        name: 'Maya Stone',
+        role: 'Product Designer',
+        posts: '198',
+        followers: '82k',
+        following: '214',
+        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'
+      }
+    ];
+
+    const cardsContainer = document.getElementById('cardsContainer');
+
+    profileList.forEach(function(profile) {
+      const card = document.createElement('article');
+      card.className = 'user-card';
+
+      card.innerHTML = `
+        <figure class="user-image-box">
+          <img class="user-image" src="${profile.image}" alt="Portrait of ${profile.name}">
+        </figure>
+
+        <h1 class="user-name">${profile.name}</h1>
+        <p class="user-role">${profile.role}</p>
+
+        <section class="user-stats" aria-label="Profile stats">
+          <div class="stats-item">
+            <p class="stats-number">${profile.posts}</p>
+            <p class="stats-text">Posts</p>
+          </div>
+          <div class="stats-item">
+            <p class="stats-number">${profile.followers}</p>
+            <p class="stats-text">Followers</p>
+          </div>
+          <div class="stats-item">
+            <p class="stats-number">${profile.following}</p>
+            <p class="stats-text">Following</p>
+          </div>
+        </section>
+
+        <div class="user-actions">
+          <button class="btn btn-primary" type="button">Follow</button>
+          <button class="btn btn-secondary" type="button">Message</button>
+        </div>
+      `;
+
+      cardsContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>

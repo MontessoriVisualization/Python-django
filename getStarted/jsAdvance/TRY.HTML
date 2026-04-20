@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript HTML DOM</h1>
+<h2>The getElementById() Method</h2>
+
+<p id="demo">hi</p>
+
+<script>
+// Access a paragraph Element
+const myPara = document.getElementById("demo");
+
+console.log(myPara.innerHTML)//<p id="demo">dafdsfdsfa</p>
+// console.log(document.getElementById("demo"))
+
+document.getElementById("demo").innerHTML = "Hello World!";
+console.log(document.getElementById("demo").innerHTML)
+myPara.addEventListener("click",function(){
+    console.log("clicked")
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Enter your name";
+    myPara.innerHTML += input.outerHTML;
+
+})
+
+</script>
+
+</body>
+</html>

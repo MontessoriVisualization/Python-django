@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+</head>
+<body>
+    <form id="todoForm">
+        <input type="text" id="todoInput" placeholder="Enter a task">
+        <button type="submit" class="add-task">Add Task</button>
+    </form>
+    <ul id="todoList">
+        <li id="1"><span class="task">Clean my room</span> <button class="edit-btn">Edit</button><button class="delete-btn">Delete</button></li>
+    </ul>
+
+    <a href="https://www.google.com" target="_blank">google</a>
+    e.preventdefault()//to prevent default behaviour of form
+    
+</body>
+<script>
+    const addTaskBtn = document.querySelector(".add-task");
+    const todoInput = document.querySelector("#todoInput");
+    const todoList = document.getElementById("todoList");
+
+    addTaskBtn.addEventListener("click", addTask)
+    todoInput.addEventListener("keypress", function(e){
+        if(e.key === "Enter"){
+            addTask(e);
+        }
+    })
+  function addTask(e){
+        const taskText = todoInput.value.trim();//trim   "      ram     "=>"ram"
+        if(taskText !== ""){
+          const newTask = document.createElement("li");
+          newTask.classList.add(todoList.children.length + 1);
+          newTask.innerHTML = `<span class="task">${taskText}</span> <button class="edit-btn">Edit</button><button class="delete-btn">Delete</button>`;
+          todoList.appendChild(newTask);
+          todoInput.value = "";
+        }
+
+     
+    } 
+
+</script>
+</html>

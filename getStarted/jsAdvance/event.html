@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: chartreuse;
+                font-size: 1.5em;
+
+
+    }
+    .display{
+        margin-top: 20px;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ccc;
+        min-height: 100px;
+        display: flex;
+    }
+    .indicator{
+        color: red;
+        animation: blink 1s infinite;
+    }
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+</style>
+</head>
+<body>
+    <input type="text">
+    <div class="display">
+    <span class="indicator">|</span>
+    </div>
+    <script>
+        const input = document.querySelector("input");
+        const display = document.querySelector(".display");
+
+        const arr =[]
+        input.addEventListener("change",function(e){
+            
+            console.log(e);
+            arr.push(e.target.value);
+            display.textContent = e.target.value;
+            console.log(arr);
+        })
+        document.addEventListener('keydown',function(e){
+
+            
+            if(e.key === "Enter"){
+                display.innerHTML+='</br>';
+            }
+            else if(e.key === "Backspace"){
+                display.innerHTML = display.innerHTML.slice(0,-1);
+            }
+            else if(e.key === "Shift" || e.key === "Control" || e.key === "Alt"){
+                //do nothing
+
+                
+            }
+            else{
+                display.innerHTML += e.key;
+            }
+        })
+        input.addEventListener("mouseover",function(e){
+            input.style.backgroundColor = "lightblue";
+        })
+        input.addEventListener("mouseout",function(e){
+            input.style.backgroundColor = "white";
+        })
+
+    </script>
+</body>
+</html>

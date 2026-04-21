@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter</title>
+    <style>
+        body{
+            background-color: #d65b5b;
+            color: rgb(24, 24, 24);
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        button{
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="counter">0</h1>
+    <button id="increment">Increment</button>
+    <button id="decrement">Decrement</button>
+
+    
+</body>
+<script>
+    let count = 0;
+    const counter = document.getElementById('counter');
+    const incrementBtn = document.getElementById('increment');
+    const decrementBtn = document.getElementById('decrement');
+
+    incrementBtn.addEventListener('click', () => {
+        count++;
+        counter.textContent = count;
+    });
+
+    decrementBtn.addEventListener('click', () => {
+        count--;
+        counter.textContent = count;
+    });
+</script>
+
+</html>

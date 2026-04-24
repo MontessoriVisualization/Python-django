@@ -203,31 +203,36 @@
             id: 1,
             name: "Ceramic Pour-Over Set",
             price: 34.5,
-            image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80"
+            image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80",
+            quantity: 1
         },
         {
             id: 2,
             name: "Handmade Linen Apron",
             price: 28.0,
-            image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
+            image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
         },
         {
             id: 3,
             name: "Cedar Soy Candle",
             price: 16.75,
-            image: "https://images.unsplash.com/photo-1502741126161-b048400d3c0b?auto=format&fit=crop&w=600&q=80"
+            image: "https://images.unsplash.com/photo-1502741126161-b048400d3c0b?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
         },
         {
             id: 4,
             name: "Minimal Desk Organizer",
             price: 22.9,
-            image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
+            image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
         },
         {
             id: 5,
             name: "Recycled Leather Notebook",
             price: 12.5,
-            image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"
+            image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
         }
     ];
     const cartlist = [];
@@ -253,50 +258,68 @@
         const card = createCard(item);
         container.appendChild(card);
     });
+function updateCart(){
       const addToCartButtons = document.querySelectorAll(".add-to-cart");
       addToCartButtons.forEach(button => {
         button.addEventListener("click", function(){
             const card = button.closest(".card");
             const itemId = card.getAttribute("id");
             const item = itemsList.find(i => i.id == itemId);
+
             if(item){
+                if(cartlist.filter(i => i.id == itemId).length > 0){
+                                        button.textContent = "Already in Cart";
+
+                    return;
+                }
                 cartlist.push(item);
                 const cartItem = createCartItem(item);
                 document.querySelector(".Cart-container").appendChild(cartItem);
-                newcart();
-                console.log(cartlist);
+                updateTotal();
+
+                
             }
         });
       });
+      
+    }
+updateCart();
 
-function newcart(){
-    const decrementButtons = document.querySelectorAll(".decrease");
-    const incrementButtons = document.querySelectorAll(".increase");
-    
-    decrementButtons.forEach(button => {
-        button.addEventListener("click", function(){
-            console.log('decrement clicked');
-            const cartItem = button.closest(".cart-item");
-            const quantityElement = cartItem.querySelector(".quantity");
-            let quantity = Number(quantityElement.textContent);
-            if(quantity > 0){
-                quantity--;
-                quantityElement.textContent = quantity;
+
+function updateTotal(){
+    const totalPrice = cartlist.reduce((total, item) => total + (item.price * item.quantity), 0);
+    document.querySelector(".total-price h2").textContent = `Total: $${totalPrice.toFixed(2)}`;
+}
+function updateCartItem(itemId, newQuantity){
+    const item = cartlist.find(i => i.id == itemId);
+    if(item){
+        item.quantity = newQuantity;
+        const cartItem = document.getElementById(`cart-item-${itemId}`);
+        if(cartItem){
+            cartItem.querySelector(".quantity").textContent = newQuantity;
+            cartItem.querySelector(".price").textContent = `Total: $${(item.price * newQuantity).toFixed(2)}`;
+            updateTotal();
+        }
+    }
+}
+function setupCartItemButtons(){
+    document.querySelector(".Cart-container").addEventListener("click", function(e){
+        if(e.target.classList.contains("increase") || e.target.classList.contains("decrease")){
+            const cartItem = e.target.closest(".cart-item");
+            const itemId = parseInt(cartItem.getAttribute("id").replace("cart-item-", ""));
+            const item = cartlist.find(i => i.id == itemId);
+            if(item){
+                if(e.target.classList.contains("increase")){
+                    updateCartItem(itemId, item.quantity + 1);
+                } else if(e.target.classList.contains("decrease") && item.quantity > 1){
+                    updateCartItem(itemId, item.quantity - 1);
+                }
             }
-        });
-    });
-    
-    incrementButtons.forEach(button => {
-        button.addEventListener("click", function(){
-            console.log("Increment button clicked");
-            const cartItem = button.closest(".cart-item");
-            const quantityElement = cartItem.querySelector(".quantity");
-            let quantity = Number(quantityElement.textContent);
-            quantity++;
-            quantityElement.textContent = quantity;
-        });
+        }
     });
 }
+
+
 
 function createCartItem(item){
     const cartItem = document.createElement("div");
@@ -307,13 +330,19 @@ function createCartItem(item){
         <p class="price">Total: $${item.price}</p>
         <div class="cart-inc-dec">
             <button class="decrease">-</button>
-            <span class="quantity">1</span>
+            <span class="quantity">${item.quantity}</span>
             <button class="increase">+</button>
         </div>
     `;
+
+
+    
+    
     return cartItem;
+
 }
-const total = 0;
+setupCartItemButtons();
 </script>
+
 
 </html>

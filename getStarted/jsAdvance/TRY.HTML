@@ -1,30 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPLE CART</title>
+</head>
 <body>
-<h1>JavaScript HTML DOM</h1>
-<h2>The getElementById() Method</h2>
+    
+<div class="iteam-coontai">
 
-<p id="demo">hi</p>
+ <div class='cart-item'>
+            <img> src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Ceramic Pour-Over Set" class="item-image">
+              <div class="item-price">$${item.price.toFixed(2)}</div>
+        <div class="item-quantity">Quantity: ${item.quantity}</div>
+        <button class='add-to-cart-btn'>Add to Cart</button>
+            </div>
+</div>
+<div class="added-cont" style="background-color: red;">
 
+
+</div>
+    
+</body>
 <script>
-// Access a paragraph Element
-const myPara = document.getElementById("demo");
+    const iteamContainer = document.querySelector(".iteam-coontai");
+    const addedContainer = document.querySelector(".added-cont");
+        const itemsList = [
+        {
+            id: 1,
+            name: "Ceramic Pour-Over Set",
+            price: 34.5,
+            image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80",
+            quantity: 1
+        },
+        {
+            id: 2,
+            name: "Handmade Linen Apron",
+            price: 28.0,
+            image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
+        },
+        {
+            id: 3,
+            name: "Cedar Soy Candle",
+            price: 16.75,
+            image: "https://images..com/photo-1502741126161-b048400d3c0b?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
+        },
+        {
+            id: 4,
+            name: "Minimal Desk Organizer",
+            price: 22.9,
+            image: "https://images..com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
+        },
+        {
+            id: 5,
+            name: "Recycled Leather Notebook",
+            price: 12.5,
+            image: "https://images..com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
+        }
+    ];
+    const cartiteam=[
+            {
+            id: 4,
+            name: "Minimal Desk Organizer",
+            price: 22.9,
+            image: "https://images..com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
+        },
+        {
+            id: 5,
+            name: "Recycled Leather Notebook",
+            price: 12.5,
+            image: "https://images..com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
+                quantity: 1
+        }
+    ]
+  function renderItems(){
+      itemsList.forEach(item => {
+        const itemElement = createItemElement(item);
+        iteamContainer.appendChild(itemElement);
 
-console.log(myPara.innerHTML)//<p id="demo">dafdsfdsfa</p>
-// console.log(document.getElementById("demo"))
+    });
+    cartiteam.forEach(item => {
+        console.log("hi");
+        const itemElement = createAddedCart(item);
+        addedContainer.appendChild(itemElement);
 
-document.getElementById("demo").innerHTML = "Hello World!";
-console.log(document.getElementById("demo").innerHTML)
-myPara.addEventListener("click",function(){
-    console.log("clicked")
-    const input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Enter your name";
-    myPara.innerHTML += input.outerHTML;
+    });
+}
+
+    function createItemElement(item){
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+        cartItem.setAttribute("data-id",item.id);
+        cartItem.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" class="item-image">
+        ${item.name} 
+        <div class="item-price">$${item.price.toFixed(2)}</div>
+        <div class="item-quantity">Quantity: ${item.quantity}</div>
+        <button class='add-to-cart-btn'>Add to Cart</button>
+        `;
+
+        /*
+        <div class='cart-item'>
+            img src="https://images..com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Ceramic Pour-Over Set" class="item-image">
+              <div class="item-price">$${item.price.toFixed(2)}</div>
+        <div class="item-quantity">Quantity: ${item.quantity}</div>
+        <button class='add-tocart-btn'>Add to Cart</button>
+            </div>
+        */
+        return cartItem;
+    }
+
+function addToCart(){
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click",()=>{
+            const itemElement = button.closest(".cart-item");
+            console.log(itemElement);
+            const id = itemElement.getAttribute("data-id");
+            const iteamObject = itemsList.filter(item=>{
+                return item.id == id;
+            });
+            console.log(iteamObject);
+            const existingCartItem = cartiteam.find(cartItem => cartItem.id == id);
+            console.log(existingCartItem);
+            if(existingCartItem){
+                existingCartItem.quantity += 1;
+                const cartItemElement = addedContainer.querySelector(`[data-cart-id="${id}"]`);
+                console.log(existingCartItem.quantity);
+                updateCartQuantity(cartItemElement,existingCartItem.quantity);
+
+
+            }
+            else{
+                cartiteam.push(iteamObject[0]);
+            const cartItemElement = createAddedCart(iteamObject[0]);
+            addedContainer.appendChild(cartItemElement);
+            }
+            console.log(cartiteam);
+         
+        })
+    });
+}
+function createAddedCart(cartItem){
+    const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.setAttribute("data-cart-id",cartItem.id);
+        div.innerHTML = `
+       
+        <div class="item-name">${cartItem.name}</div>
+        <div class="item-price">$${cartItem.price.toFixed(2)}</div>
+        <div class="item-quantity">Quantity: ${cartItem.quantity}</div>
+        <button class='increment-btn'>+</button>
+        <button class='decrement-btn'>-</button>
+        `;
+    return div;    
+
+}
+function updateCartQuantity(cartItemElement,quantity){
+    const quantityElement = cartItemElement.querySelector(".item-quantity");
+    quantityElement.textContent = `Quantity: ${quantity}`;
+}
+function handelChangeQuantity(event){
+    console.log(event.target);
+    if(event.target.classList.contains("increment-btn") || event.target.classList.contains("decrement-btn")){
+        const cartItemElement = event.target.closest(".cart-item");
+        const id = cartItemElement.getAttribute("data-cart-id");
+        const cartItem = cartiteam.find(item => item.id == id);
+        if(event.target.classList.contains("increment-btn")){
+            cartItem.quantity += 1;
+        }
+        else if(event.target.classList.contains("decrement-btn")){
+            if(cartItem.quantity > 1){
+                cartItem.quantity -= 1;
+            }
+            else{
+                const index = cartiteam.findIndex(item => item.id == id);
+                cartiteam.splice(index,1);
+                
+
+               
+                
+                
+                cartItemElement.remove();
+                return;
+            }
+        }
+        updateCartQuantity(cartItemElement,cartItem.quantity);
+    }
+}
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+    renderItems();
+    addToCart();
+    addedContainer.addEventListener("click",handelChangeQuantity);
 
 })
 
-</script>
 
-</body>
+
+</script>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .btn{
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn" onclick="clicked()" onmouseover="over()" onmouseout="leave()">Click Me </button>
+</body>
+<script>
+    function clicked(){
+        alert("Button Clicked");
+    }
+    function over(){
+        document.querySelector(".btn").style.backgroundColor = "red";
+    }
+    function leave(){
+        document.querySelector(".btn").style.backgroundColor = "white";
+    }
+
+    </script>
+
+</html>

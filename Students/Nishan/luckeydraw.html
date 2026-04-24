@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lucky draw slot machine</title>
+    <style>
+        .container{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .slot-machine{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .slot{
+            font-size: 3em;
+            margin: 0 10px;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+        #spinButton{
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        #result{
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        .currency{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Lucky Draw Slot Machine</h1>
+    <span class="currency">$100</span>
+    <div class="slot-machine">
+        <div class="slot" id="slot1">🍒</div>
+        <div class="slot" id="slot2">🍋</div>
+        <div class="slot" id="slot3">🍇</div>
+    </div>
+    <button id="spinButton">Spin</button>
+    <div id="result"></div>
+</div>
+    
+</body>
+<script>
+
+    //initialize the symbols and get the elements
+   const symbols = ["🍒", "🍋", "🍇", "🍉", "🍊"];
+    const slot1 = document.getElementById("slot1");
+    const slot2 = document.getElementById("slot2");
+    const slot3 = document.getElementById("slot3");
+    const spinButton = document.getElementById("spinButton");
+    const result = document.getElementById("result");
+    let Currency = document.querySelector(".currency")
+    let currency=100
+    Currency.innerHTML=currency
+    console.log(Currency)
+
+    spinButton.addEventListener("click",()=>{
+        result.innerHTML=""
+        slot1.innerText= symbols[randomValue()]
+        slot2.innerText= symbols[randomValue()]
+        slot3.innerText= symbols[randomValue()]
+        if(slot1.innerText==slot2.innerText && slot2.innerText==slot3.innerText){
+            result.innerHTML="JackPot"
+            currency+=1000
+            Currency.innerHTML=currency
+        }
+        else{
+            currency-=100
+            Currency.innerHTML=currency
+
+        }
+
+    })
+    function randomValue(){
+     return Math.floor(Math.random()*symbols.length)
+     
+    }
+
+
+</script>
+</html>

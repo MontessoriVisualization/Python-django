@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider</title>
+    <style>
+        .items{
+        width: 500px;
+                background-color: red;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                overflow-x: hidden;
+                
+
+        }
+        .item{
+           min-width: 200px;
+           height: 100px;
+                background-color: blue;
+                border-radius: 12px;
+        }
+        .left, .right{
+           position: absolute;
+              width: 30px;
+                height: 30px;
+                background-color: black;
+                color: white;
+                font-size: 20px;
+                border-radius: 999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        }
+        .left{
+            left: 0px;
+        }
+        .right{
+            right: 0px;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+                            position: relative;
+                            width: 500px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"><</div>
+<div class="items">
+    
+        <div class="item"></div>
+
+        <div class="item"></div>
+
+        <div class="item"></div>
+
+        <div class="item"></div>
+
+        <div class="item"></div>
+
+        <div class="item"></div>
+</div>
+<div class="right">></div>
+    </div>
+    
+</body>
+<script>
+    const leftBtn = document.querySelector(".left");
+    const rightBtn = document.querySelector(".right");
+    const itemsContainer = document.querySelector(".items");
+    let scrollAmount = 0;
+    const scrollPerClick = 150;
+
+    rightBtn.addEventListener("click", () => {
+console.log("itemsContainer.scrollWidth:", itemsContainer.scrollWidth);
+console.log("itemsContainer.clientWidth:", itemsContainer.clientWidth);
+        if (scrollAmount < (itemsContainer.scrollWidth - itemsContainer.clientWidth)) {
+            scrollAmount += scrollPerClick;
+            itemsContainer.scrollTo({
+                left: scrollAmount,
+                behavior: "smooth"
+            });
+        }
+    });
+
+    leftBtn.addEventListener("click", () => {
+        if (scrollAmount > 0) {
+            scrollAmount -= scrollPerClick;
+            itemsContainer.scrollTo({
+                left: scrollAmount,
+                behavior: "smooth"
+            });
+        }
+
+    });
+    </script>
+
+
+</html>

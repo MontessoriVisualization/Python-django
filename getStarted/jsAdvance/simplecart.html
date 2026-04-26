@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nepal Wildlife Conservation Intelligence Report 2024–2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a2e1a;
+    --moss: #2d4a2d;
+    --fern: #3d6b3d;
+    --sage: #6b9e6b;
+    --leaf: #9dc99d;
+    --mist: #d4e8d4;
+    --cream: #f5f0e8;
+    --amber: #c97c1a;
+    --rust: #b84a2a;
+    --slate: #3a4a5a;
+    --ink: #1a1e1a;
+    --gold: #d4a843;
+    --alert: #c0392b;
+    --info: #2980b9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* === HEADER === */
+  .report-header {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 60px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(61,107,61,0.08) 20px,
+      rgba(61,107,61,0.08) 40px
+    );
+  }
+  .report-header .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+  .report-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--cream);
+    position: relative;
+    max-width: 720px;
+    margin-bottom: 20px;
+  }
+  .report-header .subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--leaf);
+    max-width: 600px;
+    margin-bottom: 32px;
+  }
+  .report-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--sage);
+  }
+  .meta-item span {
+    display: block;
+    color: var(--leaf);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* === LAYOUT === */
+  .container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* === TOC === */
+  .toc {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 32px 48px;
+    border-bottom: 3px solid var(--amber);
+  }
+  .toc h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px 32px;
+  }
+  .toc a {
+    color: var(--leaf);
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc a::before { content: '▸'; color: var(--amber); font-size: 10px; }
+  .toc a:hover { color: var(--cream); }
+
+  /* === SECTION HEADINGS === */
+  .section {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid rgba(61,107,61,0.2);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .section-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--forest);
+    color: var(--leaf);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .section-title-group {}
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.2;
+  }
+
+  /* === NEWS CARDS === */
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .news-card {
+    background: white;
+    border: 1px solid rgba(61,107,61,0.15);
+    border-left: 4px solid var(--fern);
+    border-radius: 0 6px 6px 0;
+    padding: 20px 24px;
+    transition: box-shadow 0.2s;
+  }
+  .news-card:hover { box-shadow: 0 4px 20px rgba(26,46,26,0.08); }
+
+  .news-card.severity-critical { border-left-color: var(--alert); }
+  .news-card.severity-high { border-left-color: var(--amber); }
+  .news-card.severity-positive { border-left-color: var(--sage); }
+
+  .news-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .news-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+    flex: 1;
+  }
+  .news-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--sage);
+    white-space: nowrap;
+    background: var(--mist);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .news-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+  }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+  }
+  .tag-location { background: var(--mist); color: var(--moss); }
+  .tag-species { background: #fff3d4; color: #7a4f00; }
+  .tag-source { background: #eaf0ff; color: #2c4a8a; }
+
+  .news-summary {
+    font-size: 14px;
+    color: #444;
+    margin: 10px 0 8px;
+  }
+
+  .why-matters {
+    background: var(--mist);
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--moss);
+    display: flex;
+    gap: 8px;
+  }
+  .why-matters::before {
+    content: '💡';
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* === ANALYSIS SECTION === */
+  .analysis-block {
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 8px;
+    padding: 36px 40px;
+    margin: 48px 0;
+  }
+  .analysis-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--leaf);
+    margin-bottom: 8px;
+  }
+  .analysis-block .analysis-intro {
+    font-style: italic;
+    color: var(--sage);
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .analysis-q {
+    margin-bottom: 24px;
+  }
+  .analysis-q h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(157,201,157,0.2);
+  }
+  .analysis-q p {
+    font-size: 14.5px;
+    color: var(--mist);
+    line-height: 1.75;
+  }
+
+  .finding-pill {
+    display: inline-block;
+    background: rgba(157,201,157,0.15);
+    color: var(--leaf);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin: 3px 3px 3px 0;
+    border: 1px solid rgba(157,201,157,0.25);
+  }
+
+  /* === DIGITAL SOLUTIONS === */
+  .solutions-header {
+    background: linear-gradient(135deg, var(--slate) 0%, #1a2a3a 100%);
+    color: var(--cream);
+    padding: 48px;
+    border-radius: 8px 8px 0 0;
+    margin-top: 48px;
+  }
+  .solutions-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .solutions-header p {
+    color: #aac4dd;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  .solution-card {
+    background: white;
+    border: 1px solid #dde8f0;
+    border-top: none;
+    padding: 28px 32px;
+    transition: box-shadow 0.2s;
+  }
+  .solution-card:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+  .solution-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+  .solution-card + .solution-card {
+    border-top: 1px solid #dde8f0;
+  }
+
+  .solution-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .solution-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--slate);
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .solution-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--slate);
+    line-height: 1.3;
+  }
+  .solution-problem-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    background: #edf4ff;
+    color: #2c5aa0;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    margin-top: 14px;
+  }
+  @media (max-width: 620px) {
+    .solution-grid { grid-template-columns: 1fr; }
+    .report-header { padding: 40px 24px 32px; }
+    .report-header h1 { font-size: 28px; }
+    .toc { padding: 24px; }
+    .analysis-block { padding: 24px; }
+    .solutions-header { padding: 28px 24px; }
+    .solution-card { padding: 20px 24px; }
+    .container { padding: 0 20px; }
+    .section { padding: 32px 0 24px; }
+  }
+
+  .sol-field {
+    font-size: 13.5px;
+  }
+  .sol-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--sage);
+    margin-bottom: 3px;
+  }
+  .sol-value { color: #333; line-height: 1.55; }
+
+  .impact-bar {
+    height: 6px;
+    background: #e8eeea;
+    border-radius: 3px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+  .impact-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--fern), var(--sage));
+    border-radius: 3px;
+  }
+  .feasibility-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-top: 4px;
+  }
+  .feasibility-high { background: #d4edda; color: #155724; }
+  .feasibility-medium { background: #fff3cd; color: #7a5200; }
+  .feasibility-low { background: #fde8e8; color: #7a2020; }
+
+  /* === DIVIDERS === */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--fern), transparent);
+    margin: 8px 0 24px;
+  }
+
+  /* === STATS BAR === */
+  .stats-bar {
+    background: var(--moss);
+    padding: 20px 48px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--leaf);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--sage);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* === FOOTER === */
+  .report-footer {
+    background: var(--forest);
+    color: var(--sage);
+    padding: 32px 48px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    margin-top: 64px;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="report-header">
+  <div class="badge">Research Intelligence Report · Wildlife Conservation Analytics</div>
+  <h1>Nepal Wildlife Crisis &amp; Digital Innovation Report<br>2024–2026</h1>
+  <p class="subtitle">A structured analysis of Nepal's major wildlife events, recurring threats, and technology-driven opportunities for conservation.</p>
+  <div class="report-meta">
+    <div class="meta-item">Coverage Period <span>April 2024 – April 2026</span></div>
+    <div class="meta-item">Focus Geography <span>Federal Republic of Nepal</span></div>
+    <div class="meta-item">Analyst Role <span>Wildlife Conservation &amp; Digital Innovation</span></div>
+    <div class="meta-item">Report Type <span>Field Intelligence + Tech Opportunity</span></div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">355</div><div class="stat-label">Wild Tigers (2022)</div></div>
+  <div class="stat-item"><div class="stat-num">752</div><div class="stat-label">One-Horned Rhinos</div></div>
+  <div class="stat-item"><div class="stat-num">397</div><div class="stat-label">Snow Leopards (est. 2025)</div></div>
+  <div class="stat-item"><div class="stat-num">83</div><div class="stat-label">Deaths Jul–Dec 2024</div></div>
+  <div class="stat-item"><div class="stat-num">23.4%</div><div class="stat-label">Land as Protected Areas</div></div>
+  <div class="stat-item"><div class="stat-num">20</div><div class="stat-label">Protected Areas</div></div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <a href="#s1">01 · Poaching &amp; Illegal Wildlife Trade</a>
+    <a href="#s2">02 · Human-Wildlife Conflict</a>
+    <a href="#s3">03 · Habitat Loss &amp; Environmental Pressure</a>
+    <a href="#s4">04 · Conservation Efforts &amp; Rescue Operations</a>
+    <a href="#s5">05 · National Parks &amp; Protected Areas</a>
+    <a href="#s6">06 · Species Population Changes</a>
+    <a href="#s7">07 · Policy, Law &amp; Government Action</a>
+    <a href="#s8">08 · Community Conservation</a>
+    <a href="#s9">09 · Climate-Related Wildlife Threats</a>
+    <a href="#s10">10 · Wildlife Incidents, Deaths &amp; Emergencies</a>
+    <a href="#analysis">▶ Pattern Analysis</a>
+    <a href="#digital">▶ Digital Technology Opportunities</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════════════════════ SECTION 1 ═══════════════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-header">
+    <div class="section-icon">🎯</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 01</div>
+      <div class="section-title">Poaching &amp; Illegal Wildlife Trade</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal Confirmed as Both Source and Transit Country for Global Wildlife Trafficking</div>
+        <div class="news-date">Sep 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 National</span>
+        <span class="tag tag-species">🐅 Tiger, Rhino, Pangolin, Red Panda, Snow Leopard</span>
+        <span class="tag tag-source">📰 Israel J. Ecology &amp; Evolution / Brill, 2024</span>
+      </div>
+      <p class="news-summary">A peer-reviewed study confirmed Nepal remains a critical hub for illicit wildlife trade despite celebrated successes with tigers and rhinos. Seizure data shows Nepal is used as a transit corridor between Indian source habitats and Chinese consumer markets, with organized criminal syndicates increasingly targeting multiple species in single operations.</p>
+      <div class="why-matters">Nepal's open border with India and proximity to China make it structurally exposed to transnational wildlife crime. Enforcement gaps are systematically exploited by professional networks — not just subsistence poachers.</div>
+    </div>
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">Indigenous Communities Bearing the Highest Cost of Organized Wildlife Crime</div>
+        <div class="news-date">Dec 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Terai / Chitwan / Bardiya</span>
+        <span class="tag tag-species">🦏 Tiger, Rhino (parts for Tibetan medicine)</span>
+        <span class="tag tag-source">📰 Global Voices, Dec 14, 2025</span>
+      </div>
+      <p class="news-summary">An investigative report revealed that Tharu and other indigenous communities in the Terai are disproportionately recruited as low-level poachers by organized crime networks. These individuals handle carcasses and wildlife parts, face the highest disease and legal risks, while traffickers and buyers profit at the top of the value chain. End markets are primarily in China and Southeast Asia for traditional medicine.</p>
+      <div class="why-matters">Conservation enforcement disproportionately punishes the most vulnerable. Tech solutions must differentiate between frontline poachers (economic desperation) and the organized networks that recruit them.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">WWF-DNPWC Bagmati Province IWT Reduction Project Targets 50% Trafficking Decline</div>
+        <div class="news-date">2024–2026 (Ongoing)</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Bagmati Province / Chitwan / Parsa National Parks</span>
+        <span class="tag tag-species">🐆 Multiple species (leopard, tiger, rhino)</span>
+        <span class="tag tag-source">📰 IWT Challenge Fund / WWF Nepal</span>
+      </div>
+      <p class="news-summary">An active multi-year project addresses systemic weaknesses: Nepal Police lack wildlife parts identification skills; transportation workers are bribed to carry illegal parts; and socioeconomically disadvantaged people are employed as poachers near Chitwan and Parsa National Parks. The project trains police and transport workers and improves community livelihoods as an alternative to poaching.</p>
+      <div class="why-matters">Highlights three exact enforcement gaps — police capacity, transport system infiltration, and community vulnerability — all of which are addressable by digital and data tools.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Red Panda Hide Smuggling Drops — But Undetected Poaching Remains a Serious Concern</div>
+        <div class="news-date">Mar 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Taplejung / Eastern Nepal</span>
+        <span class="tag tag-species">🐼 Red Panda (Ailurus fulgens)</span>
+        <span class="tag tag-source">📰 Phys.org / AFP, Mar 14, 2025</span>
+      </div>
+      <p class="news-summary">Nepali authorities confiscated 33 red panda hides in the past five years — down from 70 hides confiscated between 2011–2015. Police credit weakened smuggling networks and reduced profits. However, conservationists warn that many poaching incidents go undetected, making the apparent reduction potentially misleading. Nepal imposes prison terms of up to 10 years for poaching protected species.</p>
+      <div class="why-matters">A declining seizure count does not necessarily mean declining poaching — it may mean better evasion. Passive camera trap systems in red panda habitat are urgently needed to independently verify population trends.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal Achieves 10th "Zero Poaching Year" for Rhinos — 774 Consecutive Days Without Loss</div>
+        <div class="news-date">Dec 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Chitwan / Bardiya / Koshi Tappu</span>
+        <span class="tag tag-species">🦏 Greater One-Horned Rhinoceros</span>
+        <span class="tag tag-source">📰 The Himalayan Times / WWF Nepal, Jan 2, 2026</span>
+      </div>
+      <p class="news-summary">WWF Nepal confirmed that Nepal had gone 774 consecutive days without rhino poaching, achieving its 10th zero-poaching year since 2011. This milestone was aided by Nepal's first-ever conservation dog squad, specifically dedicated to wildlife crime investigation — operating independently of police or army units. Ten rhinos were also translocated from high-density areas of Chitwan to redistribute the population.</p>
+      <div class="why-matters">Nepal's anti-rhino-poaching model is a global success story. The introduction of dedicated canine units signals a maturing enforcement infrastructure that can be augmented with AI and sensor technology.</div>
+    </div>
+
+  </div>
+</div><!-- end section 1 -->
+
+
+<!-- ═══════════════════════════════ SECTION 2 ═══════════════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-header">
+    <div class="section-icon">⚠️</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 02</div>
+      <div class="section-title">Human-Wildlife Conflict</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">58 People Killed by Wildlife in Nepal in One Fiscal Year as Conflict Intensifies</div>
+        <div class="news-date">Mar 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 National (Terai focus)</span>
+        <span class="tag tag-species">🐅 Tiger, 🐘 Elephant, 🦏 Rhino, 🐆 Leopard</span>
+        <span class="tag tag-source">📰 Kathmandu Post, Mar 1, 2024</span>
+      </div>
+      <p class="news-summary">Nepal's DNPWC annual report documented 58 human fatalities from wildlife attacks in a single fiscal year — the highest in recent memory. The report directly links the increase to forest cover expansion and rising wild animal populations, particularly tigers (355 in 2022). It calls for replacing the 50-year-old National Park and Wildlife Conservation Act (1973) with updated legislation that defines the roles of all three tiers of government in conflict mitigation.</p>
+      <div class="why-matters">A 50-year-old law is governing a conservation landscape that has fundamentally changed. Conflict response systems are outdated, under-resourced, and lack real-time spatial data tools.</div>
+    </div>
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">83 Nepalis Die from Wildlife Encounters in Six Months — 70 from Snakebite Alone</div>
+        <div class="news-date">Jul–Dec 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 National</span>
+        <span class="tag tag-species">🐍 Snakes (primary), Tiger, Elephant, Rhino</span>
+        <span class="tag tag-source">📰 Xinhua News / Police Report cited by Explorersweb, Jan 2026</span>
+      </div>
+      <p class="news-summary">A police report cited by Xinhua News agency revealed 83 Nepalis died from wild animal encounters between July and December 2024. Of these, 70 deaths (84%) were caused by snakebites — a major underpublicized crisis. Big cats and mega-herbivores account for the remainder. The data underlines that the "human-wildlife conflict" problem extends far beyond charismatic megafauna.</p>
+      <div class="why-matters">Snakebite mortality is massively underaddressed by conservation technology. Simple mobile reporting apps and AI-based snake species identification could directly save lives — a quick-win for digital intervention.</div>
+    </div>
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">Rural Women in Bardiya at Disproportionate Risk — 84% of Attacks Within 1km of Forest</div>
+        <div class="news-date">Mar 2026</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Bardiya / Khata Corridor</span>
+        <span class="tag tag-species">🐅 Royal Bengal Tiger</span>
+        <span class="tag tag-source">📰 Mongabay, Mar 18, 2026</span>
+      </div>
+      <p class="news-summary">A Mongabay investigation found that Bardiya recorded 53 wildlife-caused deaths over five years, with the heaviest toll falling on rural women who enter forest edges to collect firewood and cut grass — activities that coincide with peak tiger movement at dawn and dusk. In 2024, 84% of attacks occurred within 1 kilometer of forest boundaries. All six of the most recent fatal attacks occurred in community forests, not inside the national park.</p>
+      <div class="why-matters">The spatial concentration of attacks (within 1 km of forest edges, during specific hours) makes this problem ideally suited for geofenced early-warning alerts delivered to mobile phones in real time.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">11 People Killed, 41 Injured in Chitwan National Park Area in 2024–25</div>
+        <div class="news-date">2024–2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Chitwan National Park</span>
+        <span class="tag tag-species">🦏 Rhino (5 deaths), 🐅 Tiger (4), Crocodile (2)</span>
+        <span class="tag tag-source">📰 The Rising Nepal / Kathmandu Post, 2024–2025</span>
+      </div>
+      <p class="news-summary">Chitwan National Park — Nepal's most visited wildlife area — recorded 11 fatalities and 41 injuries in the 2024–25 fiscal year. Rhinos caused 5 deaths, tigers 4, and mugger crocodiles 2. The park has Nepal's highest tiger concentration (128 tigers) and is the main habitat for one-horned rhinos. Local authorities acknowledged human encroachment into buffer zones and the lack of timely rescue response as key factors.</p>
+      <div class="why-matters">Chitwan is a conflict "hot zone" with documented species-specific attack patterns — a ready dataset for AI-based conflict prediction and automated alert systems.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Growing Tiger Population Drives HWC Surge Across Nepal's Terai — Scientific Analysis</div>
+        <div class="news-date">Aug 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Bardia and Chitwan National Parks</span>
+        <span class="tag tag-species">🐅 Tiger, 🦏 Rhino, 🐘 Elephant</span>
+        <span class="tag tag-source">📰 Scientific Reports (Nature), Aug 25, 2025</span>
+      </div>
+      <p class="news-summary">A peer-reviewed study in Scientific Reports analyzed 14,989 HWC incidents from 2013 to 2022. Crop raiding (8,129 incidents) and livestock depredation (4,611 incidents) were most common. Elephants were responsible for 42.8% of all incidents. Crucially, total HWC incidents showed a statistically significant increase over 10 years, directly correlating with rising megafauna populations — confirming that conservation success and community conflict are escalating simultaneously.</p>
+      <div class="why-matters">10-year longitudinal data confirms HWC is getting structurally worse as conservation succeeds. Without digital conflict prediction and mitigation, community tolerance for conservation will collapse.</div>
+    </div>
+
+  </div>
+</div><!-- end section 2 -->
+
+
+<!-- ═══════════════════════════════ SECTION 3 ═══════════════════════════════ -->
+<div class="section" id="s3">
+  <div class="section-header">
+    <div class="section-icon">🌿</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 03</div>
+      <div class="section-title">Habitat Loss &amp; Environmental Pressure</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal Legalizes Infrastructure Projects Inside National Parks — Conservation Groups Alarmed</div>
+        <div class="news-date">Jan 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 National Policy (All Protected Areas)</span>
+        <span class="tag tag-species">🌲 All habitats and species</span>
+        <span class="tag tag-source">📰 The Third Pole / Eco-Business / Dialogue Earth, Apr 2024</span>
+      </div>
+      <p class="news-summary">On January 4, 2024, Nepal's government approved a legal amendment allowing large infrastructure projects — hydropower dams, hotels, and tourist resorts — inside national parks and protected areas. Internal DNPWC data showed at least 298 hydro projects had already received feasibility permits in protected areas since 2009. At least 8 hydro projects are under construction in Langtang National Park alone. Conservationists call the change a critical threat to wildlife corridors and biodiversity.</p>
+      <div class="why-matters">This single policy change could fragment the most intact wildlife corridors in Nepal. Real-time habitat monitoring using satellite data and GIS tools is now urgently needed to track cumulative impact of infrastructure incursion.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Cable Car Project in Taplejung Threatens Key Red Panda Habitat — Community Protests</div>
+        <div class="news-date">Mar 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Taplejung District, Eastern Nepal</span>
+        <span class="tag tag-species">🐼 Red Panda (Ailurus fulgens)</span>
+        <span class="tag tag-source">📰 Phys.org / AFP, Mar 14, 2025</span>
+      </div>
+      <p class="news-summary">Residents of Taplejung — a critical red panda habitat in Nepal's far east — protested mass tree-felling for a new cable car tourism project. Local conservationist Rajindra Mahat called for greater caution in infrastructure planning in biodiversity-sensitive zones. The red panda is globally Endangered (IUCN), and bamboo forest fragmentation is its primary existential threat.</p>
+      <div class="why-matters">Tourism infrastructure is being approved in sensitive habitats without adequate biodiversity impact data. AI-powered habitat suitability mapping could identify and flag high-risk development zones before permits are issued.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Elephant Habitat in Nepal Declining at 0.27% Annually — New Action Plan Published</div>
+        <div class="news-date">May 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Terai / Churia Region</span>
+        <span class="tag tag-species">🐘 Asian Elephant (Elephas maximus)</span>
+        <span class="tag tag-source">📰 NTNC Elephant Conservation Action Plan 2025–2035</span>
+      </div>
+      <p class="news-summary">Nepal's National Trust for Nature Conservation released the Elephant Conservation Action Plan 2025–2035, documenting that elephant habitat has declined at a rate of 0.27% per year from 1930 to 2020. Of Nepal's ~20,000 km² of Terai forest, only ~12,000 km² remains ecologically suitable for elephants — and half of that lies outside protected areas. Highways, irrigation canals, and settlements are cutting through traditional migratory corridors. About 150 wild elephants regularly cross between Nepal and India.</p>
+      <div class="why-matters">Habitat fragmentation is the root driver of human-elephant conflict. Without real-time tracking of both elephants and infrastructure, corridor viability cannot be assessed or protected.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Red Panda Slipping Toward Extinction as Road Building and Hydropower Fragment Bamboo Forests</div>
+        <div class="news-date">Jul 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Eastern Nepal / Nepal-India Border</span>
+        <span class="tag tag-species">🐼 Red Panda</span>
+        <span class="tag tag-source">📰 Mongabay, Jul 5, 2025</span>
+      </div>
+      <p class="news-summary">A Mongabay report documented the accelerating fragmentation of red panda habitat in eastern Nepal, driven by road construction and hydropower expansion. Fewer than 10,000 red pandas remain globally; Nepal holds an estimated 237–1,061 individuals. Bamboo forests — the species' primary food source — are being cleared at pace beyond what monitoring systems can track. Stray dog incursions into forest edge habitat also pose a growing disease and predation risk.</p>
+      <div class="why-matters">Red panda range and bamboo forest cover can be mapped via satellite. Automated deforestation alerts and community-submitted sighting data could provide near-real-time habitat health monitoring.</div>
+    </div>
+
+  </div>
+</div><!-- end section 3 -->
+
+
+<!-- ═══════════════════════════════ SECTION 4 ═══════════════════════════════ -->
+<div class="section" id="s4">
+  <div class="section-header">
+    <div class="section-icon">🌱</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 04</div>
+      <div class="section-title">Conservation Efforts &amp; Rescue Operations</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal Launches First Conservation-Dedicated Dog Squad for Wildlife Crime Investigation</div>
+        <div class="news-date">Dec 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Chitwan (initial deployment)</span>
+        <span class="tag tag-species">🦏 Rhino and all poached species</span>
+        <span class="tag tag-source">📰 WWF Nepal / The Himalayan Times, Jan 2, 2026</span>
+      </div>
+      <p class="news-summary">WWF Nepal reported the establishment of Nepal's first independent dog squad dedicated exclusively to wildlife crime investigation — operating outside traditional police and army canine units. Operating initially in Chitwan, the squad is credited as a key factor in maintaining zero rhino poaching. Plans are in place to expand to Bardiya and other tiger conservation zones.</p>
+      <div class="why-matters">Purpose-trained canine units combined with AI-enabled evidence tracking and CCTV networks at known trafficking routes could form a powerful integrated enforcement system.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Wildlife Rescue Centre Opens at Parsa National Park — Ending Dependence on Chitwan Teams</div>
+        <div class="news-date">Apr 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Parsa National Park (Bara / Parsa / Makwanpur)</span>
+        <span class="tag tag-species">🐅 Tiger, 🐘 Elephant (primary conflict species)</span>
+        <span class="tag tag-source">📰 Rising Nepal Daily, Apr 2025</span>
+      </div>
+      <p class="news-summary">A wildlife rescue centre operated jointly by NTNC and Parsa National Park was inaugurated, designed for rescue, treatment, and rehabilitation of injured, endangered, and problem-causing animals. Previously, rescue operations at Parsa depended on teams from Chitwan, causing delays of up to three hours — during which retaliatory killings of animals and human casualties increased. The centre enables immediate intervention across Bara, Parsa, and Makwanpur districts.</p>
+      <div class="why-matters">Rescue response time is a direct variable in both human survival and animal retaliation killings. A digital dispatch-and-tracking system could further reduce response times and coordinate teams across districts.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Bardiya-Banke Complex: Camera Traps and Joint Community Patrols Show Progress in 2025</div>
+        <div class="news-date">Jul 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Bardiya National Park / Banke National Park</span>
+        <span class="tag tag-species">🐅 Tiger, 🦏 Rhino, 🐘 Elephant, Swamp Deer, Gharial</span>
+        <span class="tag tag-source">📰 Global Conservation / ZSL Nepal, Jul 10, 2025</span>
+      </div>
+      <p class="news-summary">Global Conservation and ZSL Nepal reported significant progress in Bardiya-Banke anti-poaching operations through new camera trap deployments, upgraded ranger training, and joint community patrols. The complex is critical habitat for multiple endangered species. Ranger livelihoods support and real-time patrol data collection were cited as key drivers of improved detection and reduced poaching incidents.</p>
+      <div class="why-matters">Camera traps are already deployed — but manual image review is slow and error-prone. AI-powered trap image classification (identifying species, poachers, and vehicles) would dramatically increase operational value.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">ZSL Nepal Rewilding Parsa: Former Farmland Converted to Tiger Habitat</div>
+        <div class="news-date">Dec 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Parsa National Park</span>
+        <span class="tag tag-species">🐅 Tiger, 🐘 Elephant, 🦏 Rhino</span>
+        <span class="tag tag-source">📰 ZSL / WildCats Conservation Alliance, Dec 2024</span>
+      </div>
+      <p class="news-summary">ZSL Nepal field teams reported active rewilding efforts at Parsa National Park — converting degraded farmland and former agricultural plots into core tiger habitat. The park is a critical corridor linking Chitwan National Park and India's Valmiki Tiger Reserve. Women's cooperatives established by ZSL were also noted as providing livelihood stability, reducing forest-resource dependence among buffer zone communities.</p>
+      <div class="why-matters">Rewilding outcomes must be tracked scientifically. Satellite-based vegetation recovery monitoring and automated camera trap species inventories can provide objective habitat quality data over time.</div>
+    </div>
+
+  </div>
+</div><!-- end section 4 -->
+
+
+<!-- ═══════════════════════════════ SECTION 5 ═══════════════════════════════ -->
+<div class="section" id="s5">
+  <div class="section-header">
+    <div class="section-icon">🏞️</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 05</div>
+      <div class="section-title">National Parks, Reserves &amp; Protected Areas</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">At Least 8 Hydropower Projects Under Construction Inside Langtang National Park</div>
+        <div class="news-date">Apr 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Langtang National Park (Rasuwa / Nuwakot / Sindhupalchowk)</span>
+        <span class="tag tag-species">🐼 Red Panda, Snow Leopard, other alpine species</span>
+        <span class="tag tag-source">📰 The Third Pole / Dialogue Earth, Apr 2024</span>
+      </div>
+      <p class="news-summary">Former Langtang National Park Chief Warden Pramod Bhattarai confirmed that at least eight hydropower projects are under active construction within park boundaries — a direct consequence of the January 2024 legal amendment. These projects risk fragmenting one of Nepal's most biodiverse mountain ecosystems, home to red pandas, snow leopards, and Himalayan black bears.</p>
+      <div class="why-matters">The scale of infrastructure intrusion into protected areas requires systematic habitat impact monitoring — a task no human team can do at speed and scale without satellite and AI tools.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Shuklaphanta National Park: Displaced Families Living on Forest Edge Face Nightly Elephant Threats</div>
+        <div class="news-date">Feb 2026</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Shuklaphanta National Park, Sudurpaschim Province</span>
+        <span class="tag tag-species">🐘 Elephant, 🐅 Tiger (44 resident tigers)</span>
+        <span class="tag tag-source">📰 Kathmandu Post, Feb 10–11, 2026</span>
+      </div>
+      <p class="news-summary">A Kathmandu Post investigation documented 2,027 households displaced in the Shuklaphanta buffer zone, living without permanent resolution to their resettlement status. These families face nightly threats from elephants and tigers. A 6-year-old girl named Rejina died from an elephant attack while her family slept. Shuklaphanta is home to Nepal's largest swamp deer population (2,300+) and 44 tigers.</p>
+      <div class="why-matters">A high-stakes conflict zone with identified displaced communities — an ideal site for GPS-based early warning systems and real-time animal tracking integrated with community alert phones.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal's Protected Area System Covers 23.39% of Land — 20 Areas Including 12 National Parks</div>
+        <div class="news-date">Ongoing / 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 National</span>
+        <span class="tag tag-species">🌿 All biodiversity</span>
+        <span class="tag tag-source">📰 DNPWC (Department of National Parks and Wildlife Conservation)</span>
+      </div>
+      <p class="news-summary">Nepal's DNPWC manages 20 protected areas covering 23.39% of the country's total land area — one of the highest proportions in Asia. The network includes 12 National Parks, 1 Wildlife Reserve, 6 Conservation Areas, and 1 Hunting Reserve, spanning from the Terai lowlands to the high Himalayas. However, the department acknowledges poor coordination mechanisms between federal, provincial, and local governments in conservation management.</p>
+      <div class="why-matters">With 23% of land protected but fragmented governance, a unified digital data management platform is critical for consistent monitoring, reporting, and inter-agency coordination across all 20 protected areas.</div>
+    </div>
+
+  </div>
+</div><!-- end section 5 -->
+
+
+<!-- ═══════════════════════════════ SECTION 6 ═══════════════════════════════ -->
+<div class="section" id="s6">
+  <div class="section-header">
+    <div class="section-icon">📊</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 06</div>
+      <div class="section-title">Rare Sightings, Population Changes &amp; Species Decline</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal Officially Estimates Snow Leopard Population at 397 — Highest Densities in Shey Phoksundo</div>
+        <div class="news-date">Dec 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Shey Phoksundo NP / Manaslu Conservation Area / High Himalayas</span>
+        <span class="tag tag-species">🐈 Snow Leopard (Panthera uncia)</span>
+        <span class="tag tag-source">📰 WWF Nepal / The Himalayan Times, Jan 2, 2026</span>
+      </div>
+      <p class="news-summary">For the first time, Nepal officially estimated its snow leopard population at 397 individuals — the result of a systematic national survey using camera traps and population modeling. The highest densities were recorded in Shey Phoksundo National Park and the Manaslu Conservation Area. WWF Nepal flagged that climate change is already forcing snow leopards to higher altitudes, compressing their usable range and increasing conflict with livestock herders.</p>
+      <div class="why-matters">An official baseline count is a conservation milestone. Continuous AI-enabled camera trap monitoring can now track changes against this baseline and detect population shifts driven by climate change.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Tiger Population Reaches 355 — Nepal Tripled Its Tiger Count Since 2010, But Conflicts Follow</div>
+        <div class="news-date">Ongoing (2022 census / 2024 analysis)</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Terai Tiger Landscapes (Chitwan, Bardiya, Banke, Parsa, Shuklaphanta)</span>
+        <span class="tag tag-species">🐅 Royal Bengal Tiger (Panthera tigris tigris)</span>
+        <span class="tag tag-source">📰 Mongabay, Dec 18, 2024</span>
+      </div>
+      <p class="news-summary">Nepal tripled its tiger population — from 121 in 2010 to 355 in 2022 — as part of the global TX2 initiative. However, a Mongabay analysis published in December 2024 shows this success is generating a secondary crisis: tigers are expanding into human-settled areas beyond park boundaries, a tiger in Chitwan turned out to be old and malnourished when captured, and community tolerance is eroding under repeated attack pressure. Infrastructure expansion through tiger habitat remains a critical concern.</p>
+      <div class="why-matters">Population success without spatial planning creates conflict. GPS collar data on tigers, combined with settlement maps, can predict high-risk overlap zones before fatalities occur.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Red Panda Population: Only 237–1,061 Remain in Nepal, Declining from Multiple Pressures</div>
+        <div class="news-date">2024–2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Eastern Nepal (Taplejung, Ilam), Langtang, Manaslu</span>
+        <span class="tag tag-species">🐼 Red Panda</span>
+        <span class="tag tag-source">📰 Red Panda Network / Phys.org / Mongabay 2025</span>
+      </div>
+      <p class="news-summary">Estimates for Nepal's wild red panda population range from 237 to 1,061 individuals — a wide uncertainty that itself reflects poor monitoring capacity. The population faces pressure from low birth rates, high infant mortality, bamboo die-off after flowering, habitat insulation, pest contamination, and stray dog predation. Globally fewer than 10,000 individuals remain. Nepal holds an estimated 25% of global red panda habitat.</p>
+      <div class="why-matters">The wide population estimate range (237–1,061) signals a critical data gap. Systematic camera trap monitoring across red panda range can narrow this uncertainty and guide targeted conservation investment.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Snow Leopard Rescued from Koshi Province and Transferred to Lalitpur Central Zoo</div>
+        <div class="news-date">Jan 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Koshi Province → Lalitpur (Central Zoo)</span>
+        <span class="tag tag-species">🐈 Snow Leopard</span>
+        <span class="tag tag-source">📰 The Himalayan Times (Photo: Skanda Gautam), Jan 26, 2024</span>
+      </div>
+      <p class="news-summary">A snow leopard was rescued from Koshi Province and transferred to Nepal's Central Zoo in Lalitpur. The rescue highlighted both the capacity of conservation agencies to intervene when animals are threatened and the ongoing challenges of managing snow leopards in areas where their range intersects with human activity in Nepal's high mountains.</p>
+      <div class="why-matters">Rescue and rehabilitation operations are increasing as wildlife populations and human pressure both grow simultaneously. Digital case management systems for wildlife rescues can improve coordination and post-release tracking.</div>
+    </div>
+
+  </div>
+</div><!-- end section 6 -->
+
+
+<!-- ═══════════════════════════════ SECTION 7 ═══════════════════════════════ -->
+<div class="section" id="s7">
+  <div class="section-header">
+    <div class="section-icon">⚖️</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 07</div>
+      <div class="section-title">Policy, Law Enforcement &amp; Government Action</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">Government Amends Law to Allow Infrastructure Inside Protected Areas — Conservation Groups Sound Alarm</div>
+        <div class="news-date">Jan 4, 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Kathmandu / National Policy</span>
+        <span class="tag tag-species">🌲 All habitats</span>
+        <span class="tag tag-source">📰 The Third Pole / Dialogue Earth / Eco-Business, Apr 11, 2024</span>
+      </div>
+      <p class="news-summary">Nepal's cabinet approved an amendment under the 1974 National Parks and Wildlife Conservation Act allowing hydropower dams, hotels, and tourist resorts to be built inside protected areas. The DNPWC frames the change as part of consolidating 12 outdated regulations into one "umbrella regulation," but conservation groups warn it removes the strongest legal barrier against habitat destruction. Critics argue the amendment should focus on human-wildlife conflict, indigenous rights, and livelihoods rather than infrastructure access.</p>
+      <div class="why-matters">A policy change this significant requires immediate environmental impact monitoring. Satellite habitat tracking and GIS dashboards can provide early evidence of whether biodiversity harm is occurring in practice.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">New Wildlife Compensation Guidelines Expand Eligibility — Now Covering 16 Species</div>
+        <div class="news-date">Jul 2023 (Effective) / Analyzed Aug 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 National</span>
+        <span class="tag tag-species">🐅 Tiger, 🐘 Elephant, 🦏 Rhino, + 12 others including Nilgai and Monkey</span>
+        <span class="tag tag-source">📰 Mongabay, Aug 24, 2024</span>
+      </div>
+      <p class="news-summary">Compensation guidelines effective from July 2023 expanded the list of wildlife causing compensable damage from 14 to 16 species, adding nilgai antelopes and common monkeys. A Mongabay investigation in 2024 found the compensation system deeply flawed in practice: paperwork is complex, processing is slow, local offices are understaffed, and many victims — especially the rural poor — never successfully claim compensation. In 2022–23, 5,234 livestock depredation cases were reported nationally.</p>
+      <div class="why-matters">A broken compensation system destroys community trust in conservation. A mobile-based digital claims system with GPS-verified incident reporting could radically improve access, speed, and fairness.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Police Lack Skills to Identify Wildlife Parts — Systematic Gap in IWT Enforcement</div>
+        <div class="news-date">2024–2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Bagmati Province / National</span>
+        <span class="tag tag-species">🐅 Tiger, 🦏 Rhino, 🐆 Leopard and all trafficked species</span>
+        <span class="tag tag-source">📰 WWF Nepal / IWT Challenge Fund Project Reports, 2024–2025</span>
+      </div>
+      <p class="news-summary">WWF Nepal's active IWT project documented that Nepal Police systematically lack the skills to identify illegal wildlife parts (IWP). Officers cannot visually distinguish tiger bone from livestock bone, or identify pangolin scales. This knowledge gap allows traffickers to move IWP through transport checkpoints with low detection risk. Transportation workers are also bribed to carry IWP, creating a systemic infiltration of Nepal's road and bus networks.</p>
+      <div class="why-matters">A mobile AI identification app for wildlife parts — allowing officers to photograph a specimen and receive an instant species identification — could close this enforcement gap rapidly and at low cost.</div>
+    </div>
+
+  </div>
+</div><!-- end section 7 -->
+
+
+<!-- ═══════════════════════════════ SECTION 8 ═══════════════════════════════ -->
+<div class="section" id="s8">
+  <div class="section-header">
+    <div class="section-icon">👥</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 08</div>
+      <div class="section-title">Community Conservation &amp; Awareness Efforts</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Red Panda Network's "Forest Guardian" Program: 16 Members in 2010 Now a National Model</div>
+        <div class="news-date">Jul 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Taplejung District, Eastern Nepal</span>
+        <span class="tag tag-species">🐼 Red Panda</span>
+        <span class="tag tag-source">📰 Mongabay, Jul 5, 2025</span>
+      </div>
+      <p class="news-summary">The Red Panda Network's Forest Guardian program — launched in 2010 with 16 members — has grown into one of Nepal's most ambitious citizen-led wildlife monitoring programs. Forest Guardians conduct quarterly censuses, track red panda behavior and habitat use, raise awareness, and mobilize community support against poaching. Guardian Surya Bhattarai of Taplejung received a national Green Ambassadors Award in 2023. The program now extends monitoring beyond protected areas into community forests.</p>
+      <div class="why-matters">Forest Guardians are an existing human sensor network. Equipping them with structured digital reporting tools, offline-capable data collection apps, and GPS trackers would exponentially increase the scientific value of their observations.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Local Communities in Bardiya Organize to Demand Tiger Translocation and Safety Measures</div>
+        <div class="news-date">2022 / Ongoing</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Bardiya / Banke Districts</span>
+        <span class="tag tag-species">🐅 Tiger, 🐆 Leopard</span>
+        <span class="tag tag-source">📰 Nepal News, Nov 2024</span>
+      </div>
+      <p class="news-summary">Community pressure in Bardiya following tiger attacks led to organized protests. Local people demanded tiger translocation and barbed wire fencing, reflecting the breaking point of community tolerance after 29 deaths in 5 years (23 in Bardiya, 6 in Banke). Following the protests, six tigers were captured from Bardiya and one from Banke and translocated. A police firing incident during a protest — in which one protester was killed — underlined the political stakes of conservation failure.</p>
+      <div class="why-matters">Community protest is a lagging indicator of a system that has failed. Early-warning community sentiment monitoring and timely digital reporting of attack incidents can enable proactive conflict management before protests escalate.</div>
+    </div>
+
+    <div class="news-card severity-positive">
+      <div class="news-card-header">
+        <div class="news-headline">Khata Corridor Community Forest Coordination Committee Works to Reduce Tiger Encounters</div>
+        <div class="news-date">2024–2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Khata Corridor, Bardiya District</span>
+        <span class="tag tag-species">🐅 Tiger</span>
+        <span class="tag tag-source">📰 Oryx Journal / Mongabay 2026</span>
+      </div>
+      <p class="news-summary">The Khata Corridor community forest coordination committee — a local body — was actively working to document tiger movement patterns and community behavior overlaps. A scientific study in Oryx (2024) analyzed human-tiger conflict in the corridor, finding that wildlife movement peaks at dawn and dusk along the same trails used by women to access forest resources. The mismatch between conservation knowledge and community practice is a key focus.</p>
+      <div class="why-matters">Tiger movement peak hours are known. A simple SMS or app-based daily alert system ("high tiger activity this morning in zone 3") could save lives at near-zero cost.</div>
+    </div>
+
+  </div>
+</div><!-- end section 8 -->
+
+
+<!-- ═══════════════════════════════ SECTION 9 ═══════════════════════════════ -->
+<div class="section" id="s9">
+  <div class="section-header">
+    <div class="section-icon">🌊</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 09</div>
+      <div class="section-title">Climate-Related Wildlife Threats</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">Thame Valley GLOF 2024: 450,000 Cubic Meters of Debris Water Released — New Risk Normal</div>
+        <div class="news-date">2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Thame Valley, Solukhumbu (Khumbu Region)</span>
+        <span class="tag tag-species">🏔️ Alpine ecosystems, snow leopard habitat</span>
+        <span class="tag tag-source">📰 The Annapurna Express, Mar 2026</span>
+      </div>
+      <p class="news-summary">A glacial lake outburst flood (GLOF) in Thame Valley released over 450,000 cubic meters of debris-filled water after a rock avalanche struck the Thyanbo glacier lake. Scientists now classify such events as "cascading hazards" — a glacier collapse triggers floods, landslides, habitat loss, and long-term water shortages. With permafrost thawing at up to 23 cm per year, the structural integrity of high-altitude ecosystems is rapidly degrading.</p>
+      <div class="why-matters">GLOF events are directly destroying alpine wildlife habitat. Real-time glacial lake monitoring via satellite, combined with early warning systems, can protect both human communities and high-altitude biodiversity.</div>
+    </div>
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal's 2024 Monsoon Floods Kill 236+ — Worst in Decades, Devastating Wildlife Habitats</div>
+        <div class="news-date">Sep–Oct 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Kathmandu Valley and Nationwide</span>
+        <span class="tag tag-species">🌿 All Terai and riverine habitats</span>
+        <span class="tag tag-source">📰 The Daily Star / Reuters, Oct 2024</span>
+      </div>
+      <p class="news-summary">Nepal's 2024 monsoon season brought the worst flooding in decades — 236 people killed, with 240 mm of rain in 24 hours recorded in Kathmandu. Experts confirmed that climate change is intensifying monsoon extremes. Terai national park buffer zones, wildlife corridors, and low-lying habitats were inundated. Riverine species including gharial, Gangetic dolphins, and waterbirds were significantly impacted by flood events and sedimentation.</p>
+      <div class="why-matters">Extreme monsoon events are becoming the new baseline. Flood prediction models integrated with wildlife corridor maps can identify at-risk habitats in advance and enable pre-disaster wildlife protection planning.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Nepal Glacial Lakes Surge from 1,926 to 2,631 Between 2005 and 2024 — 47 Lakes Classified Dangerous</div>
+        <div class="news-date">Dec 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Nepal Himalaya (all major ranges)</span>
+        <span class="tag tag-species">🏔️ Alpine species, downstream Terai habitat</span>
+        <span class="tag tag-source">📰 Science Publishing Group / UNDP, 2025</span>
+      </div>
+      <p class="news-summary">Geospatial analysis documented a net increase of 705 glacial lakes in Nepal's Himalaya between 2005 and 2024 — a 37% rise driven by a mean annual temperature increase of 0.06°C. Of these, 47 glacial lakes are now classified as potentially dangerous. A GCF-funded project ($36.1 million approved in 2025) targets the four highest-risk lakes: Thulagi, Lower Barun, Lumding Tsho, and Hongu 2.</p>
+      <div class="why-matters">Expanding glacial lakes are not just a human safety hazard — they displace alpine ecosystems and force wildlife into lower, more human-populated altitudes. Integrating glacial lake expansion data into wildlife habitat models is essential.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Snow Leopards Moving to Higher Altitudes as Climate Warming Compresses Their Range</div>
+        <div class="news-date">Dec 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 High Himalaya (Mustang, Dolpo, Mugu, Humla)</span>
+        <span class="tag tag-species">🐈 Snow Leopard</span>
+        <span class="tag tag-source">📰 WWF Nepal / The Himalayan Times, Jan 2, 2026</span>
+      </div>
+      <p class="news-summary">WWF Nepal's year-end 2025 review flagged that snow leopards are already responding to climate change by moving to higher altitudes — a range compression effect that reduces total available habitat and increases encounters with livestock herders in marginal zones. As prey species like blue sheep shift their range, snow leopards follow, bringing them into new conflict areas above traditional village boundaries.</p>
+      <div class="why-matters">Altitude-driven range shifts can be modeled using climate projections combined with camera trap location data. Predictive range modeling could identify future conflict hotspots 5–10 years in advance.</div>
+    </div>
+
+  </div>
+</div><!-- end section 9 -->
+
+
+<!-- ═══════════════════════════════ SECTION 10 ═══════════════════════════════ -->
+<div class="section" id="s10">
+  <div class="section-header">
+    <div class="section-icon">🚨</div>
+    <div class="section-title-group">
+      <div class="section-num">Category 10</div>
+      <div class="section-title">Wildlife Incidents, Deaths, Injuries &amp; Emergencies</div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="news-grid">
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">Radio-Collared Elephant "Makuna" Shot Dead at Chitwan After Charging Rangers</div>
+        <div class="news-date">Feb 5, 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Chitwan National Park (Sauraha area)</span>
+        <span class="tag tag-species">🐘 Asian Elephant (named Makuna)</span>
+        <span class="tag tag-source">📰 Mongabay, Feb 12, 2025</span>
+      </div>
+      <p class="news-summary">A wild elephant known as "Makuna" died on February 5, 2025 from a bullet wound after allegedly charging a patrol team and throwing a ranger from his mount. The elephant had been lingering around human settlements and damaging property near Sauraha. Authorities described the shooting as self-defense. Critics argued that since Makuna was radio-collared, his movements could and should have been tracked in advance, allowing non-lethal management options to be deployed proactively.</p>
+      <div class="why-matters">A radio-collared animal was killed in a preventable confrontation. Real-time GPS tracking alerts connected to ranger dispatch systems could have flagged the elephant's approach to settlements hours in advance.</div>
+    </div>
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">"Dhurbe" — Nepal's Most Notorious Elephant — Demolishes Homes Again in Chitwan (Sep 2025)</div>
+        <div class="news-date">Jan 2024 &amp; Sep 2025</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Chitwan National Park Buffer Zone</span>
+        <span class="tag tag-species">🐘 Wild Elephant (Dhurbe)</span>
+        <span class="tag tag-source">📰 Wikipedia / Multiple Nepal news sources, 2024–2025</span>
+      </div>
+      <p class="news-summary">Dhurbe — a repeatedly radio-collared wild elephant with a long history of destruction and attacks — was again terrorizing homes near Chitwan in January 2024 and September 2025. A radio transmitter had been installed in his collar for a third time in December 2023. Despite decades of incidents and three separate collaring operations, authorities have not been able to contain his impact on border communities.</p>
+      <div class="why-matters">Dhurbe's case illustrates the failure of GPS tracking without real-time alert systems. A geofencing system that automatically SMS-alerts communities when Dhurbe approaches would have prevented repeated destruction.</div>
+    </div>
+
+    <div class="news-card severity-critical">
+      <div class="news-card-header">
+        <div class="news-headline">6-Year-Old Girl Killed by Elephant Attack at Night in Shuklaphanta Buffer Zone</div>
+        <div class="news-date">Feb 2026</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Shuklaphanta National Park, Sudurpaschim Province</span>
+        <span class="tag tag-species">🐘 Wild Elephant</span>
+        <span class="tag tag-source">📰 Kathmandu Post, Feb 10–11, 2026</span>
+      </div>
+      <p class="news-summary">A 6-year-old girl named Rejina was fatally injured in a nighttime elephant attack in a displaced family's settlement on the edge of Shuklaphanta National Park. Her mother, aged 55, was also injured. The family had no way to alert neighbors in time. This case represents the intersection of multiple crises: unresolved land displacement, inadequate community warning systems, and growing elephant movement outside park boundaries at night.</p>
+      <div class="why-matters">A simple, low-cost community alert system — basic SMS, a siren triggered by motion sensors, or a community WhatsApp group linked to ranger GPS data — could have prevented this death.</div>
+    </div>
+
+    <div class="news-card severity-high">
+      <div class="news-card-header">
+        <div class="news-headline">Elephant Kills Man in Jhapa as Human-Elephant Conflict Escalates in Eastern Terai</div>
+        <div class="news-date">Nov 2024</div>
+      </div>
+      <div class="news-tags">
+        <span class="tag tag-location">📍 Jhapa District, Eastern Nepal</span>
+        <span class="tag tag-species">🐘 Wild Elephant (migratory from India)</span>
+        <span class="tag tag-source">📰 Kathmandu Post, Nov 17, 2024</span>
+      </div>
+      <p class="news-summary">A 45-year-old man was killed in Jhapa while defending his home from a rampaging elephant. The incident reflects escalating human-elephant conflicts in Nepal's eastern Terai — an area where wild elephants regularly migrate across the Nepal-India border. Of Nepal's ~230 wild elephants, approximately 150 traverse the border regularly, making cross-border coordination essential for conflict early warning.</p>
+      <div class="why-matters">Cross-border elephant movement requires a transnational GPS tracking and alert system shared between Nepal and Indian wildlife authorities — a clear gap for a data-sharing technology solution.</div>
+    </div>
+
+  </div>
+</div><!-- end section 10 -->
+
+</div><!-- end container -->
+
+
+<!-- ═══════════════════════════════ ANALYSIS ═══════════════════════════════ -->
+<div style="padding: 0 32px; max-width: 1060px; margin: 0 auto;">
+<div class="analysis-block" id="analysis">
+  <h2>Pattern Analysis &amp; Diagnostic Findings</h2>
+  <p class="analysis-intro">Synthesizing all 10 categories into actionable intelligence for problem prioritization and digital intervention design.</p>
+
+  <div class="analysis-q">
+    <h3>❶ What Wildlife Problems Appear Most Often in Nepal?</h3>
+    <p>
+      Human-wildlife conflict (HWC) is by far the most frequent and lethal issue — appearing across every region and every megafauna species. Elephant attacks, tiger fatalities, and snakebite deaths are documented yearly in national records. Habitat loss through infrastructure encroachment — hydropower, roads, resorts — is the second most pervasive structural problem, affecting both Terai lowlands and high mountain ecosystems. Illegal wildlife trade is persistent but increasingly targeted by enforcement, with trafficking networks adapting to enforcement pressure by changing routes and species.
+    </p>
+    <br>
+    <div>
+      <span class="finding-pill">Human-Wildlife Conflict</span>
+      <span class="finding-pill">Habitat Fragmentation</span>
+      <span class="finding-pill">Illegal Trade / Trafficking</span>
+      <span class="finding-pill">Compensation System Failure</span>
+      <span class="finding-pill">Policy-Conservation Mismatch</span>
+      <span class="finding-pill">Snakebite Mortality</span>
+    </div>
+  </div>
+
+  <div class="analysis-q">
+    <h3>❷ Which Problems Are Getting Worse or Repeating?</h3>
+    <p>
+      <strong style="color:var(--leaf)">Worsening:</strong> Human-wildlife conflict is structurally escalating — a 10-year scientific study (Scientific Reports, 2025) confirms a statistically significant upward trend directly correlated with megafauna population recovery. Elephant attacks in the eastern Terai and Shuklaphanta are intensifying due to corridor loss and displacement of farming communities into buffer zones. Climate-driven GLOF events have become a "new normal" rather than rare disasters — the Thame (2024) and Rasuwagadhi (2025) events show back-to-back escalation.<br><br>
+      <strong style="color:var(--leaf)">Repeating:</strong> The same problem animals appear in news repeatedly (Dhurbe elephant, 10+ years of incidents; "Govinde" elephant in Chitwan Breeding Centre). Bardiya continues to record seasonal deaths with no sustained systemic change. Red panda habitat loss from infrastructure is a recurring issue as new projects are approved in sensitive zones each year. Police IWT identification gaps are known and documented but remain unaddressed structurally.
+    </p>
+  </div>
+
+  <div class="analysis-q">
+    <h3>❸ Which Regions and Species Are Most Affected?</h3>
+    <p>
+      <strong style="color:var(--leaf)">Regions:</strong> The Terai lowlands — particularly Bardiya, Chitwan, Banke, and Shuklaphanta — are the most acute conflict zones. Eastern Nepal (Taplejung, Ilam, Jhapa) faces red panda habitat loss and elephant corridor pressures. The high Himalaya (Khumbu, Langtang, Shey Phoksundo) faces climate-driven habitat disruption and snow leopard range compression.<br><br>
+      <strong style="color:var(--leaf)">Species:</strong> Asian elephants generate the most HWC incidents (42.8% of all cases). Royal Bengal tigers generate the highest fatality rates. Snakes cause the most total deaths (84% of all wildlife mortalities). Red pandas face the most acute extinction trajectory from habitat loss. One-horned rhinos are the conservation success story — but continue to generate growing HWC as their population expands.
+    </p>
+    <br>
+    <div>
+      <span class="finding-pill">🔴 Bardiya (most dangerous district)</span>
+      <span class="finding-pill">🔴 Chitwan (highest volume of incidents)</span>
+      <span class="finding-pill">🟡 Shuklaphanta (displacement crisis)</span>
+      <span class="finding-pill">🟡 Taplejung (red panda habitat loss)</span>
+      <span class="finding-pill">🟡 Langtang (infrastructure encroachment)</span>
+      <span class="finding-pill">🟠 Jhapa / Koshi (elephant migration corridor)</span>
+    </div>
+  </div>
+
+  <div class="analysis-q">
+    <h3>❹ What Root Causes Appear Behind These Issues?</h3>
+    <p>
+      Four structural root causes drive most of Nepal's wildlife crises:<br><br>
+      <strong style="color:var(--leaf)">1. Conservation Success Without Spatial Planning:</strong> Tripling the tiger population without expanding safe habitat or managing boundary conflicts creates a predictable collision with human communities.<br><br>
+      <strong style="color:var(--leaf)">2. Outdated Legal and Institutional Architecture:</strong> The 1974 NPWCA governs a radically different landscape; enforcement agencies lack modern tools, inter-agency data sharing, or digital infrastructure.<br><br>
+      <strong style="color:var(--leaf)">3. Fragmented Governance:</strong> Federal, provincial, and local government roles in wildlife conservation are unclear, creating coordination failures and delayed responses.<br><br>
+      <strong style="color:var(--leaf)">4. Economic Desperation at the Wildlife-Human Interface:</strong> Communities living adjacent to parks depend on forest resources for survival — firewood, grass, wild food — and cannot avoid entering high-risk zones.
+    </p>
+  </div>
+
+  <div class="analysis-q">
+    <h3>❺ Which Problems Are Best Suited for AI or Digital Solutions?</h3>
+    <p>
+      The problems most amenable to technology are those with <em>spatial patterns</em>, <em>identifiable triggers</em>, <em>real-time data needs</em>, or <em>high-volume classification tasks</em>. These include: predicting and alerting HWC before it happens (spatial, temporal, and behavioral data already exists); automating camera trap image analysis (high volume, repetitive task ideal for AI); identifying wildlife parts at transport checkpoints (AI classification of images); tracking animal and human movement at forest boundaries (GPS + geofencing); and monitoring habitat change from satellite imagery (remote sensing + ML).
+    </p>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════ DIGITAL SOLUTIONS ═══════════════════════════════ -->
+<div style="padding: 0 32px 64px; max-width: 1060px; margin: 0 auto;">
+
+<div id="digital">
+  <div class="solutions-header">
+    <h2>Digital Technology Opportunities for Wildlife Protection in Nepal</h2>
+    <p>Eleven practical, evidence-based technology interventions matched to Nepal's most urgent documented wildlife problems.</p>
+  </div>
+
+  <!-- SOL 1 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">📡</div>
+      <div>
+        <div class="solution-title">01 · GPS Tracking + Real-Time Geofencing for Problem Animals</div>
+        <div class="solution-problem-tag">▸ Solves: Human-Wildlife Conflict (Elephants, Tigers, Rhinos)</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">GPS collars on known problem animals (like Dhurbe elephant, Makuna) connected to a cloud platform. When an animal enters a defined buffer zone around villages, an automated SMS or app alert is sent to park rangers, local community leaders, and affected households. Alerts trigger within minutes of boundary crossing, giving communities time to shelter safely.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">National park rangers, DNPWC, community forest committees, village leaders. Communities receive SMS or WhatsApp alerts on basic mobile phones — no smartphone required.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-high">✓ HIGH — GPS collaring is already practiced in Nepal (Dhurbe has been collared 3 times). The missing piece is the alert infrastructure, which can run on existing mobile networks.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Could directly prevent 20–40% of human fatalities from known problem animals. Deaths like the Shuklaphanta 6-year-old and Makuna's killing would both be preventable with this system in place.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 2 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">📷</div>
+      <div>
+        <div class="solution-title">02 · AI-Powered Camera Trap Image Classification</div>
+        <div class="solution-problem-tag">▸ Solves: Wildlife Monitoring, Anti-Poaching Detection, Population Survey</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">Camera traps in Bardiya, Chitwan, and Banke already generate thousands of images daily. An AI model (trained on Nepal-specific species) automatically classifies images by species, individual animal ID (using stripe/spot patterns for tigers), time of day, and — critically — detects humans in restricted zones and triggers poaching alerts. Tools like Wildlife Insights (Google) or custom models can be deployed.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">Park rangers, DNPWC biologists, WWF/ZSL research teams, and NTNC. Frees human reviewers from repetitive image sorting, allowing them to focus on alert response and field work.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-high">✓ HIGH — Camera traps are already deployed in all major parks. AI classification tools are open-source and have been successfully deployed in similar South Asian contexts.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">10x increase in monitoring coverage per ranger. Near-instant poaching alerts vs. days of delay with manual review. More accurate population census data vs. current wide uncertainty ranges (e.g., red panda: 237–1,061).</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:90%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 3 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">🗺️</div>
+      <div>
+        <div class="solution-title">03 · Human-Wildlife Conflict Prediction &amp; Risk Mapping</div>
+        <div class="solution-problem-tag">▸ Solves: HWC — Tiger, Elephant, Leopard, Rhino attacks on humans</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">Train a spatial ML model using 10+ years of HWC incident data (locations, species, time of day, season, land cover type, distance from forest edge). The model generates risk maps highlighting high-probability attack zones at specific times — updated daily or weekly. Rangers and communities receive guidance on current risk levels by area. Integrates with animal GPS data for enhanced real-time prediction.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">DNPWC district offices, park wardens, provincial government HWC response teams, and community committees. Public-facing version can display safe/unsafe zone indicators on a simple mobile map.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-medium">◆ MEDIUM-HIGH — Nepal has 10+ years of incident data (Scientific Reports 2025 study processed 14,989 cases). Data quality and standardization across districts is the main hurdle.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Enables pre-crisis deployment of rangers to high-risk zones. Community risk alerts can prevent forest entry during peak danger windows (dawn/dusk at forest edges). Could reduce Bardiya's 53 deaths per 5 years significantly.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:78%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 4 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">📱</div>
+      <div>
+        <div class="solution-title">04 · Community Mobile Reporting App (Incident + Compensation)</div>
+        <div class="solution-problem-tag">▸ Solves: HWC Reporting, Compensation Claim Failure, Under-Reporting</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">A bilingual (Nepali + local languages) mobile app allowing community members to: (1) report wildlife sightings and attacks with GPS-tagged photos, (2) submit compensation claims directly with photo evidence of crop/livestock damage, (3) receive safety alerts and tips. Offline-capable for areas with poor connectivity. Backend connects to DNPWC and district forest offices for claim processing and incident tracking.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">Buffer zone and corridor community members (primary), village community forest users, Forest Guardians (Red Panda Network), and DNPWC district compensation offices. Basic smartphone needed; simplified voice-guided UI for low-literacy users.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-high">✓ HIGH — Nepal has ~80% mobile penetration. Similar apps (e.g., WildAlert in India) have been deployed successfully. The Red Panda Network's Forest Guardian program shows community willingness to participate in structured reporting.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Transforms the broken paper-based compensation system into a transparent, auditable digital process. Creates a real-time national HWC incident database. Reduces under-reporting — meaning better data for prediction models. Restores community trust in conservation authorities.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:82%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 5 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">🔍</div>
+      <div>
+        <div class="solution-title">05 · AI Wildlife Parts Identification App for Law Enforcement</div>
+        <div class="solution-problem-tag">▸ Solves: Illegal Wildlife Trade — Police IWT Identification Gap</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">A mobile app allowing police officers and transport checkpoint staff to photograph a suspicious item (bone, skin, scale, feather) and receive an instant AI-based species identification with confidence level and legal status. Pre-trained on Nepal's primary trafficked species (tiger bones, rhino horn, pangolin scales, red panda pelts, leopard skins). Integrated with a case logging system to track seizures and locations for intelligence mapping.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">Nepal Police at road checkpoints and airports, customs officers, Central Investigation Bureau (CIB) wildlife crime units, and DNPWC inspection teams. Requires basic smartphone and camera.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-medium">◆ MEDIUM — Technology exists (iNaturalist, TRAFFIC's TrafficCam). Building a Nepal-specific training dataset requires cooperation between DNPWC, universities, and forensic labs. DNA verification backup is needed for court-admissible evidence.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Closes the documented police IWT skill gap — the primary reason trafficking succeeds through transport checkpoints. Seizure rates at Bagmati Province transport nodes could increase dramatically. Case data also maps trafficking routes for strategic intelligence.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:72%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 6 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">🛰️</div>
+      <div>
+        <div class="solution-title">06 · Satellite-Based Habitat Monitoring and Deforestation Alert System</div>
+        <div class="solution-problem-tag">▸ Solves: Habitat Loss, Infrastructure Encroachment in Protected Areas</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">Using freely available satellite imagery (Sentinel-2, Landsat, Planet) processed through change-detection algorithms, the system monitors protected area boundaries, wildlife corridors, and sensitive habitats (red panda bamboo forest, elephant corridors) for deforestation, land clearing, and infrastructure development. Automated alerts are sent to DNPWC when unauthorized clearing is detected. Integrated with GIS maps of permitted project areas to flag violations.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">DNPWC, Ministry of Forests and Environment, provincial environment offices, WWF Nepal, and investigative journalists. Global Forest Watch already provides this for Nepal — the missing layer is integration with the legal enforcement system.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-high">✓ HIGH — Global Forest Watch already covers Nepal. What's needed is a Nepal-specific enforcement integration layer, not new satellite technology. ICIMOD in Kathmandu has deep expertise in Himalayan remote sensing.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Can detect illegal clearing within days rather than months, enabling enforcement before damage becomes irreversible. Critical for monitoring the 298 hydro project feasibility areas and new cable car projects in red panda habitat.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:80%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 7 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">🐍</div>
+      <div>
+        <div class="solution-title">07 · AI Snakebite Identification App and Emergency Response System</div>
+        <div class="solution-problem-tag">▸ Solves: Snakebite Mortality (70 deaths in 6 months — the #1 wildlife killer in Nepal)</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">A mobile app that allows snakebite victims or bystanders to photograph the snake (even deceased) and instantly identify the species and venom type, along with recommended first aid steps and the nearest antivenom-stocked health facility. GPS-locates the nearest facility with appropriate antivenom. Can function offline for basic identification. Linked to a national snakebite incident registry.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">General public in rural Terai and hill districts (primary snakebite zones), community health workers, AYUSH practitioners, and emergency services. Works on basic Android smartphones.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-high">✓ HIGH — Apps like SnakePal (India) and similar tools are already deployed in South Asia. Nepal's snakebite burden is massively underpublicized — this could be a life-saving quick win with relatively low development cost.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">With 70 deaths in 6 months from snakebite, a 30% reduction in mortality through faster, correct treatment response could save ~20 lives per year. Potentially the highest human lives-saved per dollar invested of any intervention on this list.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:88%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 8 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">📊</div>
+      <div>
+        <div class="solution-title">08 · Unified Conservation Data Dashboard for DNPWC and Partners</div>
+        <div class="solution-problem-tag">▸ Solves: Fragmented Governance, Poor Inter-Agency Data Sharing</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">A web-based dashboard aggregating data from all 20 protected areas into a single interface: real-time HWC incident counts by district, camera trap activity status, patrol coverage maps, compensation claim pipeline, species population trend charts, poaching alert logs, and habitat change indicators. Data fed automatically from field apps and camera systems. Role-based access for different agencies.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">DNPWC headquarters, park wardens, Ministry of Forests, WWF/WWF Nepal, NTNC, ZSL Nepal, and government policymakers for evidence-based decisions. A public-facing version can show population trend data to build civic support for conservation.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-medium">◆ MEDIUM — Data fragmentation across federal and provincial levels is a genuine barrier. Requires political buy-in from DNPWC leadership and standardized data collection protocols across 20 PAs. Technical build is straightforward.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Transforms conservation decisions from anecdote-based to evidence-based. Enables early detection of escalating HWC trends before they become crises. Provides donors and international partners with accountability data. Models like SMART (Spatial Monitoring and Reporting Tool) are already used by some Nepal parks — this would standardize and expand them.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+  </div>Z
+
+  <!-- SOL 9 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">🌡️</div>
+      <div>
+        <div class="solution-title">09 · Climate-Wildlife Habitat Risk Modeling for Snow Leopards and Alpine Species</div>
+        <div class="solution-problem-tag">▸ Solves: Climate-Driven Habitat Loss, Range Compression for Alpine Species</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">Integrate climate projection data (temperature rise models, glacial retreat scenarios) with current snow leopard GPS collar locations and camera trap distribution data to model future suitable habitat extent under 2°C, 3°C, and 4°C warming scenarios. Identify which conservation areas will retain viable snow leopard habitat by 2050, and which corridors will be lost. Output: Priority habitat areas for immediate protection investment.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">Snow Leopard Trust, WWF Nepal, ICIMOD (International Centre for Integrated Mountain Development, based in Kathmandu), DNPWC, and government conservation planners for long-term protected area design.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-medium">◆ MEDIUM — ICIMOD already has climate modeling capacity for the Hindu Kush Himalaya region. The new official snow leopard population baseline (397 individuals, 2025) provides the anchor dataset. Collaboration is the main requirement, not new infrastructure.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Allows proactive rather than reactive conservation planning for Nepal's most climate-vulnerable species. Identifies which corridors to legally protect now before they become critical chokepoints. Informs $36M+ GLOF/climate adaptation investments to consider wildlife habitat co-benefits.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:68%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 10 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">🔊</div>
+      <div>
+        <div class="solution-title">10 · Acoustic Sensor Network for Anti-Poaching in Core Tiger Zones</div>
+        <div class="solution-problem-tag">▸ Solves: Poaching — Gunshot Detection and Illegal Entry in Remote Forest</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">Deploy a network of solar-powered acoustic sensors (like Rainforest Connection's Guardian devices) across core tiger zones in Bardiya and Chitwan. Sensors continuously monitor forest soundscapes and use AI to detect: gunshots, vehicle engines in restricted areas, chainsaw noise, and unusual animal distress calls. Alerts are sent to ranger patrol teams via mobile within 2–3 minutes of detection, enabling rapid interception.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">Anti-poaching ranger teams, park wardens, Nepal Army conservation units stationed in Bardiya and Chitwan. Alerts received on ruggedized smartphones or radios. Central monitoring by DNPWC intelligence unit.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-medium">◆ MEDIUM — Technology is proven globally (Rainforest Connection). Solar power works in Nepal's open forest areas. Requires reliable mobile network coverage in deployment areas, which varies in remoter Bardiya zones. Cost: ~$500–800 per device.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Dramatically increases ranger "ears on the ground" in areas impossible to fully patrol on foot. Particularly effective for nighttime poaching detection. Complements camera trap networks to create a layered sensor environment across protected area cores.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:70%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOL 11 -->
+  <div class="solution-card">
+    <div class="solution-header">
+      <div class="solution-icon">🌊</div>
+      <div>
+        <div class="solution-title">11 · GLOF Early Warning Integration with Wildlife Habitat Protection</div>
+        <div class="solution-problem-tag">▸ Solves: Monsoon Flood and GLOF Destruction of Wildlife Corridors and Habitats</div>
+      </div>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-field">
+        <div class="sol-label">How It Works</div>
+        <div class="sol-value">Extend Nepal's existing Department of Hydrology and Meteorology (DHM) GLOF early warning infrastructure to include wildlife habitat impact layers. When a GLOF or major flood alert is triggered for a river basin, the system simultaneously alerts park rangers in downstream protected areas to prepare emergency wildlife response protocols — including evacuation of captive animals and closure of flood-risk patrol routes. Integrated with elephant and rhino GPS data to monitor animal displacement.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Who Uses It</div>
+        <div class="sol-value">DHM, DNPWC, park wardens in Terai (Chitwan, Bardia, Koshi Tappu), NTNC, and military units stationed in national parks. Connects existing humanitarian early warning systems with conservation emergency response.</div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Nepal Feasibility</div>
+        <div class="sol-value">
+          <div class="feasibility-badge feasibility-medium">◆ MEDIUM-HIGH — DHM's early warning infrastructure is already being upgraded with $36M in GCF funding (2025). Adding a wildlife layer is an extension, not a new system. Requires cross-ministry coordination between Water Resources and Forests.</div>
+        </div>
+      </div>
+      <div class="sol-field">
+        <div class="sol-label">Expected Impact</div>
+        <div class="sol-value">Reduces wildlife casualties and habitat damage during increasingly frequent GLOF and monsoon flood events. 2024's catastrophic monsoon — which killed 236 people and devastated Terai habitats — demonstrates the urgency. Early warning gives rangers 2–6 hours to initiate wildlife protection protocols vs. zero warning currently.</div>
+        <div class="impact-bar"><div class="impact-fill" style="width:65%"></div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end digital solutions -->
+</div><!-- end container -->
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <strong style="color:var(--leaf)">Sources and Citations</strong><br><br>
+  Kathmandu Post | Mongabay | The Himalayan Times | Rising Nepal Daily | Scientific Reports (Nature) | WWF Nepal | DNPWC | NTNC | ZSL Nepal | Global Conservation | Phys.org / AFP | Global Voices | The Third Pole / Dialogue Earth / Eco-Business | IWT Challenge Fund | The Annapurna Express | Explorersweb | Red Panda Network | UNDP Climate Promise | Science Publishing Group | Oryx (Cambridge) | Ecological &amp; Evolutionary (Wiley) | ICIMOD | Wikipedia (Dhurbe elephant)<br><br>
+  <strong style="color:var(--leaf)">Disclaimer</strong> · This report synthesizes publicly available, credible sources. All news items are attributed. No facts have been invented. Data figures reflect the most recent published surveys and reports available as of April 2026.<br><br>
+  <strong style="color:var(--leaf)">Prepared by</strong> · Wildlife Conservation Research Analyst · Digital Innovation Focus · Nepal Country Analysis · April 2026
+</div>
+
+</body>
+</html>

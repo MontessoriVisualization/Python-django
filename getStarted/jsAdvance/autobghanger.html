@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto BG changer</title>
+    <style>
+        .container{
+            height: 100px;
+            width: 200px;
+                background-color: red;
+                border-radius: 12px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+
+    </div>
+    
+</body>
+<script>
+    const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+    const container = document.querySelector(".container");
+   const bgChanger = setInterval(() => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        container.style.backgroundColor = randomColor;
+        
+    }, 1000);
+
+    console.log("Auto BG changer is running...");
+    setTimeout(() => {
+        console.log("Auto BG changer is stopping...");
+        clearInterval(bgChanger);
+    }, 3001);
+
+</script>
+</html>

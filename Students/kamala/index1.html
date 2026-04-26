@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Todo List</title>
+<style>
+body{
+font-family:Arial;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+margin-top:50px;
+}
+
+.container{
+background:white;
+padding:30px;
+width:400px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input{
+width:70%;
+padding:10px;
+}
+
+button{
+padding:10px;
+}
+
+ul{
+padding:0;
+list-style:none;
+}
+
+li{
+margin-top:10px;
+background:#ddd;
+padding:10px;
+display:flex;
+justify-content:space-between;
+}
+
+.delete{
+background:red;
+color:white;
+border:none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>To Do List</h2>
+
+<input type="text" id="task">
+<button onclick="addTask()">Add</button>
+
+<ul id="list"></ul>
+ <!-- Tasks will appear here =  -->
+</div>
+
+<script>
+function addTask(){
+
+let task=document.getElementById("task").value;
+
+if(task==""){
+alert("Enter task");
+return;
+}
+
+let li=document.createElement("li");
+li.innerHTML=task + 
+'<button class="delete" onclick="this.parentElement.remove()">Delete</button>';
+
+document.getElementById("list").appendChild(li);
+
+document.getElementById("task").value="";
+}
+</script>
+
+</body>
+</html>

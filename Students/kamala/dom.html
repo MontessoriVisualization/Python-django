@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Change</title>
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="changeColor()">Click Me</button>
+
+    <script>
+        // Colors list
+        const bgColors = ["black", "red", "blue"];
+        const btnColors = ["red", "black", "green"];
+
+        let index = 0;
+
+        function changeColor() {
+            // Change background color
+            document.body.style.backgroundColor = bgColors[index];
+
+            // Change button color
+            const btn = document.querySelector("button");
+            btn.style.backgroundColor = btnColors[index];
+
+            // Move to next color
+            index++;
+
+            // Reset index when it reaches end
+            if (index >= bgColors.length) {
+                index = 0;
+            }
+        }
+    </script>
+
+</body>
+</html>

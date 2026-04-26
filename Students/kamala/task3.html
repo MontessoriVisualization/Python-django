@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color change</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <button onclick ="colorchange()"> click me </button>
+    <script> const bgcolor = ["red", "pink","black","white"];
+        const btncolor = ["blue", "red","yello","pink"];
+        let index = 0;
+        function colorchange(){
+            document.body.style.backgroundColor=bgcolor[index];
+            const btn = document.querySelector("button");
+            btn.style.backgroundColor = btnColors[index];
+        }
+    </script>
+</body>
+</html>

@@ -1,10 +1,54 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .btn{
+            padding: 10px 20px ;
+        }
+
+
+    </style>
 </head>
 <body>
+  <a href="https://www.google.com" target="_blank">google</a>
+    <button class = "btn" style="background-color: blue;">click me</button>
+    <script>
+        a
+        const btn = document.querySelector(".btn");
+        console.log(btn.innerText);
+        btn.innerText += "click";
+        console.log(btn.innerText);
+        console.log(btn.innerText.style.backgroundColor);
+        btn.style.color ="green";
+         const youtube=document.querySelector('a');
+        console.log(youtube);
+       youtube.href="https://www.youtube.com/";
+        youtube.textContent="youtube";
+        console.log(youtube);
+    </script>
     
 </body>
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://www.google.com" target="_blank">google</a>
+    <script>
+
+        const change=document.querySelector('a');
+        console.log(change);
+        change.href="https://www.youtube.com/";
+        change.textContent="youtube";
+        console.log(change);
+    </script>
+</body>
+</html> -->

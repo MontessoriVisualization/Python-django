@@ -1,0 +1,108 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #222;
+}
+
+.slider {
+  position: relative;
+  width: 800px;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+  width: 800px;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Buttons */
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="slider">
+  <div class="slides">
+    <img src="https://picsum.photos/id/1015/800/400">
+    <img src="https://picsum.photos/id/1016/800/400">
+    <img src="https://picsum.photos/id/1018/800/400">
+  </div>
+
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+
+<script>
+const slides = document.querySelector('.slides');
+const images = document.querySelectorAll('.slides img');
+
+let index = 0;
+const total = images.length;
+
+// Next
+document.querySelector('.next').addEventListener('click', () => {
+  index++;
+  if (index >= total) index = 0;
+  updateSlide();
+});
+
+// Prev
+document.querySelector('.prev').addEventListener('click', () => {
+  index--;
+  if (index < 0) index = total - 1;
+  updateSlide();
+});
+
+// Auto slide
+setInterval(() => {
+  index++;
+  if (index >= total) index = 0;
+  updateSlide();
+}, 3000);
+
+function updateSlide() {
+  slides.style.transform = `translateX(-${index * 800}px)`;
+}
+</script>
+
+</body>
+</html>
+```

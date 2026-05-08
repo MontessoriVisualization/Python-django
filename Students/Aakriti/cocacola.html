@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Coca-Cola</h1>
+        <h2>Quantity</h2>
+        <h3 id="cid">1</h3>
+        <h3 id="price"></h3>
+        <button id="decButton">-</button>
+        <button id="incButton">+</button>
+        
+        <script>
+
+            let count=0;
+            const price =80;
+            let total=0;
+            const cocaColaId=document.getElementById('cid');
+            const priceCocacola=document.getElementById('price');
+            const decButton =document.getElementById('decButton');
+            const incButton=document.getElementById('incButton');
+            
+           priceCocacola.innerHTML= price;
+
+            incButton.addEventListener("click", function(){
+                
+                total+=price;
+                priceCocacola.innerHTML=total;
+                count++;
+                cocaColaId.textContent=count;
+            });
+
+             decButton.addEventListener("click", function(){
+                if(count>0){
+                    
+                total-=price;
+                priceCocacola.innerHTML=total;
+                count--;
+                cocaColaId.textContent=count;
+                }
+                
+            });
+         
+        </script>
+</body>
+</html>

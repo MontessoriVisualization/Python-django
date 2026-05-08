@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .display{
+
+        }
+    </style>
+</head>
+<body>
+<div class="display">
+
+</div>
+
+<script>
+        
+       const letslearnUsers=[
+    {
+        name:"saugat Bagale",
+        age:23,
+        isLogin:true,
+        cources:["Python","Django","MERN","s"],
+        "present days":['sun',"mon","tues"]
+    },
+    {
+        name:"Nishant",
+        age:24,
+        isLogin:false,
+        cources:["Python","Django","MERN","s"],
+        "present days":['sun',"mon","tues"]
+    },
+    {
+        name:"Aakriti",
+        age:22,
+        isLogin:true,
+        cources:["Python","Django","MERN","s"],
+        "present days":['sun',"mon","tues"]
+    }
+  ]
+const displayUsers = document.querySelector('.display')
+
+let Container=document.createElement('div')
+letslearnUsers.forEach(users => {
+    // const Container=document.createElement('div')
+
+    Container.innerHTML=`Name=${users.name}\n
+    Age is ${users.age}\n
+    Login status: ${users.isLogin}\n
+    courses interested is ${users.cources}`
+    
+});
+displayUsers.appendChild(Container);
+
+console.log(displayUsers);
+</script>
+</body>
+</html>

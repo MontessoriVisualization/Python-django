@@ -1,84 +1,70 @@
-.navigation{
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(41, 54, 165);
+}
+.navbar{
+    background-color:white;
     display:flex;
-    justify-content:space-evenly;
-    gap:4px;
-     
+    justify-content: space-around;
+    align-items:center;
+    padding:30px;
 }
-.tab a{
+.links{
+    display:flex;
+    gap:100px;
+}
+a{
     text-decoration:none;
-    font-family: monospace;
-    font-size:1.5rem;
-    color:grey;
-
-}
-.tab a:hover{
-    color:cornflowerblue;
-}
-h3{
-    font-size:4rem;
+    color:rgb(117, 113, 113);
+    font-family: Roboto;
+    font-size: large;
     font-weight: bold;
-    color:orangered;
 }
-p{
-    font-size:1.5rem;
-    color:grey;
+ul{
+    list-style: none;
 }
-.bttn{
-    display:inline-block;
+.logo{
+    font-weight:bold;
+    color:rgb(117, 113, 113);
 }
-
-.enrollnow{
-
-    background-color: cornflowerblue;
-    color:white;
-    border-radius:4px;
-    padding:8px;
-}
-.enrollnow :hover{
-    background-color: orangered;
-}
-.viewall{
-
-    background-color: white;
-    color:black;
-    border-radius:4px;
-    padding:8px;
-    border-radius:1px solid orangered;
-}
-.viewall :hover{
-    background-color: orangered;
-    color:white;
-}
-.container{
-    display:inline-block;
-    background-color: cornflowerblue;
-    border-radius: 14px;
-    width:40vw;
-    height:35vh;
-    position:relative;
-}
-.box{
+.coursedropdown{
     position:absolute;
     background-color:white;
-    border:1px solid orangered;
-    border-radius: 4px;;
+    color:rgb(117, 113, 113);
+    margin:0px;
+    padding:0px;
+    min-width:150px;
+    display:none;
 }
-.box1{
-    top:0;
-    right:-1;
-    width:30px;
-    height:20px;
-}
-.box2{
-    top:-1;
-    left:-1;
-    width:40px;
-    height:80px;
-}
-.box3{
-    bottom:0;
-    right:0;
-    width:30px;
-    height:30px;
+li:hover .coursedropdown{
+    display:block;
 }
 
+.eventsdropdown{
+    position:absolute;
+    background-color:white;
+    color:rgb(117, 113, 113);
+    margin:0px;
+    padding:2px;
+    min-width:150px;
+    display:none;
+}
+li:hover .eventsdropdown{
+    display:block;
+}
+sectionss .trustbox{
+    background-color: white;
+    border: 1px solid orangered;
+    color:orangered;
+    border-radius:14px;
+    margin:auto;
+    padding:8px;
+    width:200px;
+    position: relative;
+    left:0;
+}

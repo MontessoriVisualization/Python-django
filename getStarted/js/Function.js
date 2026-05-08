@@ -17,8 +17,8 @@ console.log(message1);
 console.log(message2);
 
 //arrow function
-const addArrow = (a, b) => {
-    console.log(a + b);
+const addArrow = a=> {
+    console.log(a );
 };
 addArrow(5, 10);
 

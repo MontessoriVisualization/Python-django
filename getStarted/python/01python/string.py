@@ -39,3 +39,16 @@ print("name with replaced characters:", name.replace("s", "R")) # to replace all
 
 #index
 print("index of a in name:", name.index("a")) # to find the index of the first occurrence of "a" in the string
+
+#string slicing
+b = "Hello World!"
+print(b[2:5])# prints from [2] to [5-1]
+print(b[:5])# prints from [0] to [5-1]
+print(b[6:11])# prints from [6] to [11-1]
+print(b[-6:-1])# prints from [-6] to [-1-1]
+
+# f stringa (formatted string)
+name = "saugat"
+age = 25
+print("Hi my name is " + name + " and I am " + str(age) + " years old") # using concatenation
+print(f"Hi my name is {name} and I am {age} years old") # using f string

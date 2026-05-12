@@ -1,7 +1,6 @@
 import math
 print(math.sqrt(16))
 print(math.pi)
-
 print(dir(math)) # to see all the functions and variables in math module
 
 print("hello world")
@@ -28,7 +27,11 @@ def is_able_to_vote(age):
 # None Type:	NoneType(null in js)
 
 
-
+import os
+print(os.getcwd()) # to get the current working directory
+import sys
+print(sys.platform) # to get the platform information
+print(sys.version) # to get the python version
 # mutable and immutable data types
 
 

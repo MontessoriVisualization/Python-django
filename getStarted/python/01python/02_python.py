@@ -36,4 +36,3 @@ print(x is not z) # False because x and z are pointing to the same memory locati
 print(id(x)) # to see the memory location of x
 print(id(y)) # to see the memory location of y
 print(id(z)) # to see the memory location of z
-

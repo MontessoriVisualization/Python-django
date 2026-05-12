@@ -1,0 +1,6 @@
+1.can vote or cannot vote
+2.Gym memberships are priced based on age: $25 for adults (18 and over), $15 for children. Everyone gets a $5 discount on januarry
+3.grade calculator
+
+loop + conditional statements
+4.password strength checker (8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character)

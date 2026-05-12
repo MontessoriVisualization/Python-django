@@ -52,3 +52,14 @@ name = "saugat"
 age = 25
 print("Hi my name is " + name + " and I am " + str(age) + " years old") # using concatenation
 print(f"Hi my name is {name} and I am {age} years old") # using f string
+#in js console.log(`Hi my name is ${name} and I am ${age} years old`)
+
+#escaping characters in string
+print("He said, \"Hello World!\"") # to print double quotes in a string we can use \ before the double quotes
+print('He said, "Hello World!"') # to print double quotes in a string we can use \ before the double quotes
+
+# \n is used to print in a new line
+#  \t is used to print a tab space 
+# \b is used to print a backspace
+
+

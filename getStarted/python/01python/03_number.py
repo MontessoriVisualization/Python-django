@@ -9,3 +9,4 @@ print("type of ",complex_num, "is", type(complex_num))
 
 import random
 print(random.randint(1, 100)) # to generate a random number between 1 and 100
+

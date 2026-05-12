@@ -25,5 +25,3 @@ bool_none_value = bool(none_value) # this will give False because None is consid
 print("bool of num:", bool_num)
 print("bool of str_num:", bool_str_num)
 print("bool of none_value:", bool_none_value)
-
-

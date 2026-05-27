@@ -99,3 +99,21 @@ while True:
         break
     else:
         continue
+
+
+    #looping through dictionary and printing key value pairs
+student_details = {
+    "name": "John", 
+    "age": 20,
+    "grade": "A"
+}
+for key, value in student_details.items():
+    print(f"{key}: {value}")
+
+#if we need just values
+for value in student_details.values():
+    print(value)
+
+#if we need just keys
+for key in student_details.keys():
+    print(key)

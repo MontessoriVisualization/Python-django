@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    this is about
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block title %}
+        About Us
+{% endblock %}
+
+{% block main %}
+    <main>
+        <h1>About Us</h1>
+        <p>This is the content of the about us page.</p>
+    </main>
+{% endblock %}

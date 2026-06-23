@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'layout.css'%}">
+
+<title>
+        {% block title %}
+        Lets Learn
+    {% endblock %}
+</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            Logo
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="regester">
+            Regester now
+        </button>
+    </header>
+    {% block main %}{% endblock %}
+
+    <footer>
+        <p>&copy; 2023 Lets Learn. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
